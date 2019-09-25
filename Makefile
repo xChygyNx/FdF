@@ -6,7 +6,7 @@
 #    By: astripeb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 15:47:32 by pcredibl          #+#    #+#              #
-#    Updated: 2019/09/24 22:18:28 by astripeb         ###   ########.fr        #
+#    Updated: 2019/09/25 23:15:06 by astripeb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ CC				= gcc
 CFLAGS			= -g -Wall -Wextra -Werror
 LFLAGS			= -I $(INC_PATH) -I /usr/local/include/
 LIB				= -L $(LIB_PATH) -lftprintf
-MLX				= -L $(MLX_PATH) -l mlx -framework OpenGL -framework AppKit
+MLX				= -L $(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 
-SRC 			= fdf.c ft_exit.c
+SRC 			= fdf.c ft_exit.c create_fdf.c create_vector.c validation.c
 
 OBJ				= $(addprefix $(OBJ_PATH)/,$(SRC:.c=.o))
 
@@ -54,9 +54,9 @@ norm:
 	norminette $(INC_PATH) | grep "E"
 
 clean:
-	@$(MAKE) clean -C $(LIB_PATH)
-	@$(MAKE) clean -C $(MLX_PATH)
-	@$(MAKE) clean -C $(MLX_L_PATH)
+	#@$(MAKE) clean -C $(LIB_PATH)
+	#@$(MAKE) clean -C $(MLX_PATH)
+	#@$(MAKE) clean -C $(MLX_L_PATH)
 	@rm -rf $(OBJ)
 
 fclean: clean

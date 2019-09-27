@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:10:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/19 23:26:19 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/09/27 18:59:14 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,5 +199,7 @@ int				ft_char_count(char *str, char c);
 int				ft_len_arr(char **tab);
 
 char			*read_from_file_to_var(int fd);
+
+void			ft_swap(int *x, int *y);
 
 #endif

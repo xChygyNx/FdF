@@ -6,7 +6,7 @@
 #    By: astripeb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 15:47:32 by pcredibl          #+#    #+#              #
-#    Updated: 2019/09/25 23:15:06 by astripeb         ###   ########.fr        #
+#    Updated: 2019/09/27 19:07:54 by astripeb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,8 @@ norm:
 	norminette $(INC_PATH) | grep "E"
 
 clean:
-	#@$(MAKE) clean -C $(LIB_PATH)
-	#@$(MAKE) clean -C $(MLX_PATH)
+	@$(MAKE) clean -C $(LIB_PATH)
+	@$(MAKE) clean -C $(MLX_PATH)
 	#@$(MAKE) clean -C $(MLX_L_PATH)
 	@rm -rf $(OBJ)
 

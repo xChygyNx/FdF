@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/27 19:45:43 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/09/30 21:48:31 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@
 # include <math.h>
 # include <stdio.h>
 
-# define WIN_HEIGHT 1000
-# define WIN_WIDTH 1000
+# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1920
 
 # define USAGE  100
 # define LINE_LENGTHS 101
+
+enum				e_bool
+{
+	FALSE,
+	TRUE
+};
 
 typedef struct		s_vector
 {

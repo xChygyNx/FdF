@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_vector.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aks <aks@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/26 00:24:45 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/01 23:20:55 by aks              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*
-t_vector 	*create_one_vector(int x, int y, int z, int color)
-{
-	t_vector *vector;
-
-	if (!(vector = (t_vector*)malloc(sizeof(vector))))
-		return (NULL);
-	vector->x = x * 1.0;
-	vector->y = y * 1.0;
-	vector->z = z * 1.0;
-	vector->color = color;
-	return (vector);
-}
-*/
 
 void		free_vector_map(t_vector ***map_to_del, int height, int width)
 {
@@ -67,7 +52,7 @@ void		create_vector_map(t_fdf *fdf)
 			fdf->map[i][j].x = i;
 			fdf->map[i][j].y = j;
 			fdf->map[i][j].z = ft_atoi(line[j]);
-			fdf->map[i][j].color = 0;
+			fdf->map[i][j].c.color = 0;
 			++j;
 		}
 		ft_free_arr(line);
@@ -87,7 +72,7 @@ void		ft_print_vector_map(t_fdf *fdf)
 		while (j < fdf->width)
 		{
 			ft_printf("[%.f, %.f, %.f, %d] ",\
-			fdf->map[i][j].x, fdf->map[i][j].y, fdf->map[i][j].z, fdf->map[i][j].color);
+			fdf->map[i][j].x, fdf->map[i][j].y, fdf->map[i][j].z, fdf->map[i][j].c.color);
 			++j;
 		}
 		ft_printf("\n");

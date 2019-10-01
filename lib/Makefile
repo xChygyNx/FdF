@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: astripeb <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: aks <aks@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/22 22:04:52 by astripeb          #+#    #+#              #
-#    Updated: 2019/09/27 19:06:46 by astripeb         ###   ########.fr        #
+#    Updated: 2019/10/01 23:28:47 by aks              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= libftprintf.a
 
-#KOSTYL'
-INCLUDES		= ../../include
+INCLUDES		= ../include
 
 SRC_LIB_PATH	= ./libft
 SRC_PRINTF_PATH = ./ft_printf

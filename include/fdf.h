@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aks <aks@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/30 21:48:31 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/01 23:19:03 by aks              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,23 @@ enum				e_bool
 	TRUE
 };
 
+typedef union		u_color
+{
+	struct			s_rgb
+	{
+		unsigned char	blue:8;
+		unsigned char	green:8;
+		unsigned char	red:8;
+	}				t_rgb;
+	unsigned int	color;
+}					t_color;
+
 typedef struct		s_vector
 {
 	double			x;
 	double			y;
 	double			z;
-	int				color;
+	union u_color	c;
 }					t_vector;
 
 typedef struct		s_fdf
@@ -61,8 +72,6 @@ void				pre_validation(t_fdf *fdf, char *map);
 
 void				free_vector_map(t_vector ***map_to_del, int height,\
 					int width);
-
-//t_vector 			*create_one_vector(int x, int y, int z, int color);
 
 void				create_vector_map(t_fdf *fdf);
 

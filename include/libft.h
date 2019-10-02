@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:10:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/02 13:53:50 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/02 21:15:52 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,6 @@ char			*read_from_file_to_var(int fd);
 
 void			ft_swap(int *x, int *y);
 
-int				ft_atoi_base_fdf(char *s, int base);
+int				ft_atoi_base(char *s, int base);
 
 #endif

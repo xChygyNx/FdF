@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   ft_atoi_base_fdf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/25 22:47:57 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/26 00:14:14 by astripeb         ###   ########.fr       */
+/*   Created: 2019/10/01 16:36:05 by pcredibl          #+#    #+#             */
+/*   Updated: 2019/10/02 21:13:56 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	pre_validation(t_fdf *fdf, char *map)
+int		ft_atoi_base(char *s, int base)
 {
-	int		i;
-	char	**line;
+	int		res;
 
-	if (!(fdf->char_map = ft_strsplit(map, '\n')))
-		ft_exit(&fdf, MALLOC_FAILURE);
-	fdf->height = ft_len_arr(fdf->char_map);
-	if (!(line = ft_strsplit(fdf->char_map[0], ' ')))
-		ft_exit(&fdf, MALLOC_FAILURE);
-	fdf->width = ft_len_arr(line);
-	ft_free_arr(line);
+	res = 0;
+	while ((*s > 8 && *s < 14) || *s == 32)
+		++s;
+	while (*s)
+	{
+		if (*s >= '0' && *s <='9')
+			res = res * base + (*s - '0');
+		else if (*s >= 'a' && *s <= 'f')
+			res = res * base + (*s - 'a' + 10);
+		else if (*s >= 'A' && *s <= 'F')
+			res = res * base + (*s - 'A' + 10);
+		else
+			return (-1);
+		s++;
+	}
+	return (res);
 }

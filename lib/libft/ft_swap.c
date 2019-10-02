@@ -6,13 +6,13 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 18:37:02 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/27 18:53:01 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/02 23:25:05 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		swap(int *x, int *y)
+void		ft_swap(int *x, int *y)
 {
 	int temp;
 

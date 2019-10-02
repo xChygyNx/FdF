@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/02 14:18:39 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/02 23:17:56 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <math.h>
 # include <stdio.h>
 
-# define WIN_HEIGHT 1080
-# define WIN_WIDTH 1920
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 1024
+# define MARGIN_FROM_FRAME 150
 
 # define USAGE  100
 # define LINE_LENGTHS 101
@@ -70,15 +71,17 @@ t_fdf				*create_fdf(void);
 
 void				free_fdf(t_fdf **fdf_to_del);
 
-void				pre_validation(t_fdf *fdf, char *map);
-
 void				free_vector_map(t_vector ***map_to_del, int height,\
 					int width);
 
-void				create_vector_map(t_fdf *fdf);
+void				create_vector_map(t_fdf *fdf, char *char_map);
+
+void				point_height_color(t_fdf *fdf, int x, int y, char *point);
+
+void				create_window(t_fdf *fdf);
+
+void    			draw_line(t_fdf *fdf, int x1, int y1, int x2, int y2);
 
 void				ft_print_vector_map(t_fdf *fdf);
-
-void				point_height_color(int x, int y, char *point, t_fdf *fdf);
 
 #endif

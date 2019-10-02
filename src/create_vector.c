@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_vector.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aks <aks@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/01 23:20:55 by aks              ###   ########.fr       */
+/*   Updated: 2019/10/02 14:17:27 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void		create_vector_map(t_fdf *fdf)
 		{
 			fdf->map[i][j].x = i;
 			fdf->map[i][j].y = j;
-			fdf->map[i][j].z = ft_atoi(line[j]);
-			fdf->map[i][j].c.color = 0;
+			point_height_color(i, j, line[j], fdf);
 			++j;
 		}
 		ft_free_arr(line);

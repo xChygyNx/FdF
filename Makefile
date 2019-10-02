@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aks <aks@student.42.fr>                    +#+  +:+       +#+         #
+#    By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 15:47:32 by pcredibl          #+#    #+#              #
-#    Updated: 2019/10/01 23:29:29 by aks              ###   ########.fr        #
+#    Updated: 2019/10/02 13:52:09 by pcredibl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ else
 endif
 
 SRC 			= fdf.c ft_exit.c create_fdf.c create_vector.c validation.c
+SRC				+= vector_utility.c
 
 OBJ				= $(addprefix $(OBJ_PATH)/,$(SRC:.c=.o))
 

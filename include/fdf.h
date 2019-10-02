@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aks <aks@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/01 23:19:03 by aks              ###   ########.fr       */
+/*   Updated: 2019/10/02 14:18:39 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 # define USAGE  100
 # define LINE_LENGTHS 101
+# define INVALID_HEIGHT 102
+# define INVALID_COLOR 103
 
 enum				e_bool
 {
@@ -76,5 +78,7 @@ void				free_vector_map(t_vector ***map_to_del, int height,\
 void				create_vector_map(t_fdf *fdf);
 
 void				ft_print_vector_map(t_fdf *fdf);
+
+void				point_height_color(int x, int y, char *point, t_fdf *fdf);
 
 #endif

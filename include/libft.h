@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:10:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/02 21:15:52 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/03 22:03:33 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 65536
 
 typedef struct	s_list
 {

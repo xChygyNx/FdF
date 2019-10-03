@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 20:13:24 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/03 22:30:06 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 1024
-# define MARGIN_FROM_FRAME 150
+# define MARGIN_FROM_FRAME 100
 
 # define USAGE  100
 # define LINE_LENGTHS 101
@@ -56,18 +56,17 @@ typedef struct		s_vector
 typedef struct		s_fdf
 {
 	void			*mlx_ptr;	//идентификатор соединения с X-server
-	void			*win_ptr;	//узакатель на созданное окно
-	void			*img_ptr;	//указатель на объект изображение
-	unsigned int	*img_str;	//указатель на само изображение (строка)
-	//unsigned int	**img_arr;	//указатель на само изображение (массив)
-	int				size_line;	//размер линии
-	char			**char_map;
+	void			*win_ptr;	//узакатель на окно
+	void			*img_ptr;	//указатель на изображение
+	char			*img_str;	//строка-изображение len(size_line * height)
+	int				size_line;	//длина строки строки (WIN_WIDTH * bit_per_pixel / 8)
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
 	struct s_vector	**map;		//двумерный массив векторов
-	double			zoom;		//кратность увеличения/уменьшения
 	int				bpp;		//бит на пиксель
+	double			zoom;		//кратность увеличения/уменьшения
 	int				endian;		//порядок битов
+	char			**char_map;
 }					t_fdf;
 
 typedef struct 		s_delta
@@ -97,7 +96,13 @@ void				create_window(t_fdf *fdf);
 
 void				create_image(t_fdf *fdf);
 
-void    			draw_line(int x1, int y1, int x2, int y2);
+void    			draw_line(t_fdf *fdf, t_vector a, t_vector b);
+
+void				initialize(t_fdf *fdf);
+
+void				pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color);
+
+void				draw_image(t_fdf *fdf);
 
 void				ft_print_vector_map(t_fdf *fdf);
 

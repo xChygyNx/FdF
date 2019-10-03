@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+         #
+#    By: astripeb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 15:47:32 by pcredibl          #+#    #+#              #
-#    Updated: 2019/10/03 18:37:27 by pcredibl         ###   ########.fr        #
+#    Updated: 2019/10/03 21:31:54 by astripeb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ else
 endif
 
 SRC 			= fdf.c ft_exit.c create_fdf.c create_vector.c
-SRC				+= coordinates_and_color.c window.c bresenham2.c image.c
+SRC				+= coordinates_and_color.c initialize.c bresenham.c
+SRC				+= draw.c
 
 OBJ				= $(addprefix $(OBJ_PATH)/,$(SRC:.c=.o))
 

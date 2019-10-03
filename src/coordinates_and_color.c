@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinates_and_color.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/03 13:01:16 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/03 20:57:35 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,6 @@ void	point_height_color(t_fdf *fdf, int i, int j, char *point)
 		fdf->map[i][j].z = ft_atoi_fdf(fdf, point);
 		fdf->map[i][j].c.color = 0xFFFFFF;
 	}
-	//Перенес в point_color, потому что fdf->map.c.color unsigned
-	//оно всегда не отрицательное
-	//if (fdf->map[i][j].c.color < 0)
-	//	ft_exit(&fdf, INVALID_COLOR);
 	fdf->map[i][j].x = j;
 	fdf->map[i][j].y = i;
 }

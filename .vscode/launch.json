@@ -9,13 +9,13 @@
             "name": "fdf_debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/a.out",
-            "args": [],
+            "program": "${workspaceFolder}/fdf",
+            "args": ["maps/42.fdf"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb"
+            "MIMode": "gdb"
         }
     ]
 }

@@ -1,29 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham.c                                        :+:      :+:    :+:   */
+/*   bresenham_old.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 22:46:28 by astripeb         ###   ########.fr       */
+/*   Created: 2019/09/27 18:33:57 by astripeb          #+#    #+#             */
+/*   Updated: 2019/10/03 21:50:20 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
+/*
+static int		steep(int *x1, int *y1, int *x2, int *y2)
 {
-	int i;
+	int		steep;
 
-	if ((x >= 0 && x < WIN_WIDTH) && (y >= 0 && y < WIN_HEIGHT))
+	steep = abs(*y1 - *y2) > abs(*x1 - *x2);
+	if (steep)
 	{
-		i = y * fdf->size_line + x * 4;
-		fdf->img_str[i] = color.t_rgb.blue;
-		fdf->img_str[++i] = color.t_rgb.green;
-		fdf->img_str[++i] = color.t_rgb.red;
+		ft_swap(x1, y1);
+		ft_swap(x2, y2);
 	}
+	if (*x1 > *x2)
+	{
+		ft_swap(x1, x2);
+		ft_swap(y1, y2);
+	}
+	return (steep);
 }
+
+void    		draw_line(t_fdf *fdf, t_vector a, t_vector b)
+{
+	int dx;
+	int dy;
+	int flag;
+	int error;
+	int ystep;
+
+	flag = steep(&x1, &y1, &x2, &y2);
+	dx = x2 - x1;
+	dy = abs(y2 - y1);
+	error = dx / 2;
+	ystep = (y1 < y2) ? 1 : -1;
+	while(x1 <= x2)
+	{
+		mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr,\
+		flag ? y1 : x1, flag ? x1 : y1, 0xFFFFFF);
+		error -= dy;
+		if (error < 0)
+		{
+			y1 += ystep;
+			error +=dx;
+		}
+		++x1;
+	}
+	mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr,\
+	flag ? y1 : x1, flag ? x1 : y1, 0xFFFFFF);
+}
+*/
 
 static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta)
 {
@@ -37,7 +72,7 @@ static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta)
 	++delta.length;
 	while (delta.length--)
 	{
-		pixel_put_to_str(fdf, x, y, a.c);
+		pixel_put_to_str(fdf->mlx_ptr, fdf->win_ptr, x, y, a.c.color);
 		x += delta.dx;
 		d += 2 * delta.length_y;
 		if (d > 0)
@@ -60,7 +95,7 @@ static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta)
 	++delta.length;
 	while (delta.length--)
 	{
-		pixel_put_to_str(fdf, x, y, a.c);
+		mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, x, y, a.c.color);
 		y += delta.dy;
 		d += 2 * delta.length_x;
 		if (d > 0)
@@ -81,7 +116,7 @@ void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 	delta.length_y = abs(b.y - a.y);
 	delta.length = delta.length_x > delta.length_y ? delta.length_x : delta.length_y;
 	if (delta.length == 0)
-		pixel_put_to_str(fdf, a.x, a.y, a.c);
+		mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, a.x, a.y, a.c.color);
 	else
 	{
 		if (delta.length_y <= delta.length_x)

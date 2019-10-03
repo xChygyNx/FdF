@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/23 18:39:28 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 20:58:32 by astripeb         ###   ########.fr       */
+/*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
+/*   Updated: 2019/10/03 23:38:40 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			ft_exit(t_fdf **fdf, int err)
+void	draw_image(t_fdf *fdf)
 {
-	free_fdf(fdf);
-	if (err == USAGE)
-		ft_fprintf(2, "USAGE: ./fdf [valid_map]\n");
-	else if (err == MALLOC_FAILURE)
-		ft_fprintf(2, "Error: malloc failure\n");
-	else if (err == LINE_LENGTHS)
-		ft_fprintf(2, "Error: different line lengths\n");
-	else if (err = INVALID_COLOR)
-		ft_fprintf(2, "Error: invalid color\n");
-	else
-		perror("Error: ");
-	exit(err);
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < fdf->height)
+	{
+		j = 0;
+		while (j < fdf->width)
+		{
+			i ? draw_line(fdf, fdf->map[i][j], fdf->map[i - 1][j]) : 0;
+			j ? draw_line(fdf, fdf->map[i][j], fdf->map[i][j - 1]) : 0;
+			++j;
+		}
+		++i;
+	}
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
+	ft_bzero(fdf->img_str, fdf->size_line * WIN_HEIGHT);
+	mlx_loop(fdf->mlx_ptr);
 }

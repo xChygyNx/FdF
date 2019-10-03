@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:02:41 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 19:03:00 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/03 23:05:37 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,20 @@ static void		margin(t_fdf *fdf)
 	}
 }
 
-void			create_window(t_fdf *fdf)
+void			initialize(t_fdf *fdf)
 {
-	//int		i;
-	//int		j;
+	int		i;
+	int		j;
 
-	margin(fdf);
-	//переместил эту часть в create fdf
-	//if (!(fdf->mlx_ptr = mlx_init()))
-	//	ft_exit(&fdf, MALLOC_FAILURE);
-	if (!(fdf->win_ptr = mlx_new_window(fdf->mlx_ptr,\
-	WIN_WIDTH, WIN_HEIGHT, "Fil de Fer")))
+	if (!(fdf->mlx_ptr = mlx_init()))
 		ft_exit(&fdf, MALLOC_FAILURE);
-	/*i = 0;
-	while (i < fdf->height)
-	{
-		j = 0;
-		while (j < fdf->width)
-		{
-			i ? draw_line(fdf, fdf->map[i][j], fdf->map[i - 1][j]) : 0;
-			j ? draw_line(fdf, fdf->map[i][j], fdf->map[i][j - 1]) : 0;
-			++j;
-		}
-		++i;
-	}
-//	mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, 250, 250, 0xFFFFFF);
-	mlx_loop(fdf->mlx_ptr);*/
+	if (!(fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
+	"Fil de fer")))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (!(fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, WIN_WIDTH, WIN_HEIGHT)))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (!(fdf->img_str = mlx_get_data_addr(fdf->img_ptr, &fdf->bpp,\
+	&fdf->size_line, &fdf->endian)))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	margin(fdf);
 }

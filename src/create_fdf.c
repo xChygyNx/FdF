@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fdf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 20:13:24 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/03 23:45:58 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ t_fdf		*create_fdf(void)
 
 	if (!(fdf = (t_fdf*)malloc(sizeof(t_fdf))))
 		ft_exit(NULL, MALLOC_FAILURE);
-	//fdf->mlx_ptr = NULL;
-	if (!(fdf->mlx_ptr = mlx_init()))
-		ft_exit(&fdf, MALLOC_FAILURE);
+	fdf->mlx_ptr = NULL;
 	fdf->win_ptr = NULL;
 	fdf->img_ptr = NULL;
-	//fdf->img_arr = NULL;
 	fdf->size_line = 0;
 	fdf->char_map = NULL;
 	fdf->map = NULL;
@@ -44,8 +41,9 @@ void		free_fdf(t_fdf **fdf_to_del)
 		fdf = *fdf_to_del;
 		if (fdf)
 		{
-			fdf->win_ptr ? mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr) : 0;
 			fdf->img_ptr ? mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr) : 0;
+			fdf->win_ptr ? mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr) : 0;
+			fdf->mlx_ptr ? free(fdf->mlx_ptr) : 0;
 			ft_free_arr(fdf->char_map);
 			free_vector_map(&fdf->map, fdf->height, fdf->width);
 			free(*fdf_to_del);

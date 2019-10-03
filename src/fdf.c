@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 18:14:54 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/03 23:46:37 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int		main(int argc, char **argv)
 	if (!(map = read_from_file_to_var(fd)))
 		ft_exit(NULL, MALLOC_FAILURE);
 	create_vector_map(fdf, map);
-	create_window(fdf);
-	create_image(fdf);
-//	ft_print_vector_map(fdf);
+	initialize(fdf);
+	draw_image(fdf);
 	free_fdf(&fdf);
 	free(map);
 	close(fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 18:33:57 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 00:13:08 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/03 16:46:10 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		steep(int *x1, int *y1, int *x2, int *y2)
 	return (steep);
 }
 
-void    		draw_line(t_fdf *fdf, int x1, int y1, int x2, int y2)
+void    		draw_line(t_fdf *fdf, t_vector a, t_vector b)
 {
 	int dx;
 	int dy;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fdf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/09/26 00:19:59 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/03 20:13:24 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,20 @@ t_fdf		*create_fdf(void)
 
 	if (!(fdf = (t_fdf*)malloc(sizeof(t_fdf))))
 		ft_exit(NULL, MALLOC_FAILURE);
-	fdf->mlx_ptr = NULL;
+	//fdf->mlx_ptr = NULL;
+	if (!(fdf->mlx_ptr = mlx_init()))
+		ft_exit(&fdf, MALLOC_FAILURE);
 	fdf->win_ptr = NULL;
 	fdf->img_ptr = NULL;
+	//fdf->img_arr = NULL;
+	fdf->size_line = 0;
 	fdf->char_map = NULL;
 	fdf->map = NULL;
 	fdf->width = 0;
 	fdf->height = 0;
 	fdf->zoom = 0.0;
+	fdf->bpp = 0;
+	fdf->endian = 0;
 	return (fdf);
 }
 

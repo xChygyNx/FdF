@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/02 23:17:56 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/03 20:13:24 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "mlx.h"
 # include <math.h>
 # include <stdio.h>
+# include "color.h"
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 1024
@@ -56,13 +57,27 @@ typedef struct		s_fdf
 {
 	void			*mlx_ptr;	//идентификатор соединения с X-server
 	void			*win_ptr;	//узакатель на созданное окно
-	void			*img_ptr;	//указатель на изображение
+	void			*img_ptr;	//указатель на объект изображение
+	unsigned int	*img_str;	//указатель на само изображение (строка)
+	//unsigned int	**img_arr;	//указатель на само изображение (массив)
+	int				size_line;	//размер линии
 	char			**char_map;
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
 	struct s_vector	**map;		//двумерный массив векторов
 	double			zoom;		//кратность увеличения/уменьшения
+	int				bpp;		//бит на пиксель
+	int				endian;		//порядок битов
 }					t_fdf;
+
+typedef struct 		s_delta
+{
+	int				dx;
+	int				dy;
+	int				length_x;
+	int				length_y;
+	int				length;
+}					t_delta;
 
 
 void				ft_exit(t_fdf **fdf, int err);
@@ -80,7 +95,9 @@ void				point_height_color(t_fdf *fdf, int x, int y, char *point);
 
 void				create_window(t_fdf *fdf);
 
-void    			draw_line(t_fdf *fdf, int x1, int y1, int x2, int y2);
+void				create_image(t_fdf *fdf);
+
+void    			draw_line(int x1, int y1, int x2, int y2);
 
 void				ft_print_vector_map(t_fdf *fdf);
 

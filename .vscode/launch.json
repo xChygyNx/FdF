@@ -9,13 +9,13 @@
             "name": "fdf_debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/fdf",
-            "args": ["maps/julia.fdf"],
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb"
+            "MIMode": "lldb"
         }
     ]
 }

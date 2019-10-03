@@ -73,6 +73,6 @@ void draw_line(int x1, int y1, int x2, int y2)
 
 int     main(void)
 {
-    draw_line(1, 1, 3, 15);
+    draw_line(30, 30, 3, 15);
     return (0);
 }

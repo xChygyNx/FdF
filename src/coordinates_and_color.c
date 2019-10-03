@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   coordinates_and_color.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/02 22:57:07 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/03 13:01:16 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	point_color(char *color16)
+static int	point_color(t_fdf *fdf, char *color16)
 {
 	int		color;
 
@@ -20,10 +20,10 @@ static int	point_color(char *color16)
 	{
 		color = ft_atoi_base(&color16[2], 16);
 		if (color < 0)
-			return (-1);
+			ft_exit(&fdf, INVALID_COLOR);
 	}
 	else
-		return (-1);
+		ft_exit(&fdf, INVALID_COLOR);
 	return (color);
 }
 
@@ -62,7 +62,7 @@ void	point_height_color(t_fdf *fdf, int i, int j, char *point)
 		if (!(hex_color = ft_strsplit(point, ',')))
 			ft_exit(&fdf, MALLOC_FAILURE);
 		fdf->map[i][j].z = ft_atoi_fdf(fdf, hex_color[0]);
-		fdf->map[i][j].c.color = point_color(hex_color[1]);
+		fdf->map[i][j].c.color = point_color(fdf, hex_color[1]);
 		ft_free_arr(hex_color);
 	}
 	else
@@ -70,8 +70,10 @@ void	point_height_color(t_fdf *fdf, int i, int j, char *point)
 		fdf->map[i][j].z = ft_atoi_fdf(fdf, point);
 		fdf->map[i][j].c.color = 0xFFFFFF;
 	}
-	if (fdf->map[i][j].c.color < 0)
-		ft_exit(&fdf, INVALID_COLOR);
+	//Перенес в point_color, потому что fdf->map.c.color unsigned
+	//оно всегда не отрицательное
+	//if (fdf->map[i][j].c.color < 0)
+	//	ft_exit(&fdf, INVALID_COLOR);
 	fdf->map[i][j].x = j;
 	fdf->map[i][j].y = i;
 }

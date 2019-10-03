@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/02 22:11:45 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/03 18:14:54 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ int		main(int argc, char **argv)
 		ft_exit(NULL, MALLOC_FAILURE);
 	create_vector_map(fdf, map);
 	create_window(fdf);
+	create_image(fdf);
 //	ft_print_vector_map(fdf);
 	free_fdf(&fdf);
 	free(map);
 	close(fd);
 	return (0);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-
-}
-*/

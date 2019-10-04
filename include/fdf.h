@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 21:35:46 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/04 21:56:10 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,9 @@ void				ft_fdf(t_fdf *fdf);
 
 void				ft_print_vector_map(t_fdf *fdf);
 
+void				shift_x(t_fdf *fdf, int offset);
 
+void				shift_y(t_fdf *fdf, int offset);
 
 /*
 **  HOOOOOOOOOKS

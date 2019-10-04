@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 22:30:06 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/04 14:32:58 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 1024
 # define MARGIN_FROM_FRAME 100
+# define IDENTATION 100
 
 # define USAGE  100
 # define LINE_LENGTHS 101

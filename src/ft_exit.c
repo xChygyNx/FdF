@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 18:39:28 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 20:58:32 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/04 12:29:30 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void			ft_exit(t_fdf **fdf, int err)
 		ft_fprintf(2, "Error: malloc failure\n");
 	else if (err == LINE_LENGTHS)
 		ft_fprintf(2, "Error: different line lengths\n");
-	else if (err = INVALID_COLOR)
+	else if (err == INVALID_COLOR)
 		ft_fprintf(2, "Error: invalid color\n");
 	else
 		perror("Error: ");

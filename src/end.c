@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/03 18:23:54 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/04 20:21:51 by pcredibl         ###   ########.fr       */
+/*   Created: 2019/10/04 19:30:21 by pcredibl          #+#    #+#             */
+/*   Updated: 2019/10/04 19:46:20 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "fdf.h"
 
-# define WHITE 0xFFFFFF
-# define RED 0xFF0000
-# define GREEN 0x008000
-# define BLUE 0x0000FF
-# define YELLOW 0xFFFF00
-# define PURPLE 0x800080
-# define PINK 0xFF1493
-# define ORANGE 0xFFA500
-# define BROWN 0x8B4513
-# define GREY 0x808080
-# define BLACK 0x000000
-
-#endif
+void end_session(t_fdf *fdf, t_vector **map, int fd)
+{
+	mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);
+	mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
+	free_fdf(&fdf);
+	free(map);
+	close(fd);
+}

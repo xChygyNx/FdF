@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/02 22:44:26 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/04 21:40:30 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,31 @@ void		free_vector_map(t_vector ***map_to_del, int height, int width)
 	}
 }
 
+static void		duplicate_vector(t_fdf *fdf)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	if (!(fdf->cur_map = (t_vector**)malloc(sizeof(t_vector*) * fdf->height)))
+			ft_exit(&fdf, MALLOC_FAILURE);
+	while (i < fdf->height)
+	{
+		if (!(fdf->cur_map[i] = (t_vector*)malloc(sizeof(t_vector) * fdf->width)))
+			ft_exit(&fdf, MALLOC_FAILURE);
+		j = 0;
+		while (j < fdf->width)
+		{
+			fdf->cur_map[i][j].x = fdf->map[i][j].x;
+			fdf->cur_map[i][j].y = fdf->map[i][j].y;
+			fdf->cur_map[i][j].z = fdf->map[i][j].z;
+			fdf->cur_map[i][j].c.color = fdf->map[i][j].c.color;
+			++j;
+		}
+		++i;
+	}
+}
+
 void		create_vector_map(t_fdf *fdf, char *char_map)
 {
 	char	**line;
@@ -72,6 +97,7 @@ void		create_vector_map(t_fdf *fdf, char *char_map)
 		ft_free_arr(line);
 		++i;
 	}
+	duplicate_vector(fdf);
 }
 
 void		ft_print_vector_map(t_fdf *fdf)

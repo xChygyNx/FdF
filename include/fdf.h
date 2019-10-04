@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 20:27:56 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/04 21:35:46 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct		s_fdf
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
 	struct s_vector	**map;		//двумерный массив векторов
+	struct s_vector	**cur_map;
 	int				bpp;		//бит на пиксель
 	double			zoom;		//кратность увеличения/уменьшения
 	int				endian;		//порядок битов
@@ -105,11 +106,11 @@ void				pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color);
 
 void				draw_image(t_fdf *fdf);
 
-void				rotate_x(t_fdf *fdf, float rad);
+void				rotate_x(t_fdf *fdf, double rad);
 
-void				rotate_z(t_fdf *fdf, float rad);
+void				rotate_z(t_fdf *fdf, double rad);
 
-void				rotate_y(t_fdf *fdf, float rad);
+void				rotate_y(t_fdf *fdf, double rad);
 
 void				ft_fdf(t_fdf *fdf);
 

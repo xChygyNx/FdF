@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 10:55:25 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 13:53:54 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:29:13 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ t_vector	find_center(t_fdf *fdf)
 
 	i = fdf->width / 2;
 	j = fdf->height / 2;
-	return(fdf->map[i][j]);
+	return (fdf->map[i][j]);
 }
 
-void	zoom(t_fdf *fdf, int keycode, double zoom)
+void		zoom(t_fdf *fdf, int keycode, double zoom)
 {
 	t_vector		center;
 	static double	cur_zoom = 1.0;

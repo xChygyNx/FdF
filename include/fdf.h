@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 10:27:06 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 13:47:45 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ typedef struct		s_fdf
 	int				size_line;	//длина строки строки (WIN_WIDTH * bit_per_pixel / 8)
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
-	struct s_vector	**map;		//двумерный массив векторов
-	struct s_vector	**cur_map;
 	int				bpp;		//бит на пиксель
-	double			zoom;		//кратность увеличения/уменьшения
 	int				endian;		//порядок битов
 	char			**char_map;
+	struct s_vector	**map;		//двумерный массив векторов
+	struct s_vector	**cur_map;
+	float			**matrix;
+	double			zoom;		//кратность увеличения/уменьшения
 }					t_fdf;
 
 typedef struct 		s_delta
@@ -103,8 +104,6 @@ void    			draw_line(t_fdf *fdf, t_vector a, t_vector b);
 
 void				initialize(t_fdf *fdf);
 
-void				pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color);
-
 void				draw_image(t_fdf *fdf);
 
 void				rotate_x(t_fdf *fdf, double rad);
@@ -126,5 +125,32 @@ void				shift_z(t_fdf *fdf, int z);
 */
 
 int					key_hook(int key_code, void *param);
+
+
+/*
+**  WAKE UP NEO, MATRIX HAS YOU
+*/
+
+void				free_matrix(float ***matrix_to_del);
+
+float				**create_matrix(void);
+
+float				**matrix_x(float alpha);
+
+float				**matrix_y(float alpha);
+
+float				**matrix_z(float alpha);
+
+float				**multiplication(float **cur, float **matrix);
+
+void				print_matrix(float **matrix);
+
+float				**matrix_orto(void);
+
+float				**change_matrix(float **matrix, float alpha, char axis);
+
+void				rotate(t_fdf *fdf, float **matrix);
+
+void				isometric(t_fdf *fdf);
 
 #endif

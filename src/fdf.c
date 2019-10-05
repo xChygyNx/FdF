@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 18:56:04 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 12:29:26 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,19 @@ int		main(int argc, char **argv)
 	close(fd);
 	return (0);
 }
+
+/*
+int		main(int argc, char **argv)
+{
+	float	**m1;
+	float	**m2;
+
+	m1 = matrix_orto();
+	m2 = matrix_z(0.523599);
+	print_matrix(m1);
+	print_matrix(m2);
+	m1 = multiplication(m1, m2);
+	print_matrix(m1);
+	return (0);
+}
+*/

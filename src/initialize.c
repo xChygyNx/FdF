@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:02:41 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/03 23:05:37 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 13:32:47 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void			initialize(t_fdf *fdf)
 		ft_exit(&fdf, MALLOC_FAILURE);
 	if (!(fdf->img_str = mlx_get_data_addr(fdf->img_ptr, &fdf->bpp,\
 	&fdf->size_line, &fdf->endian)))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (!(fdf->matrix = matrix_orto()))
 		ft_exit(&fdf, MALLOC_FAILURE);
 	margin(fdf);
 }

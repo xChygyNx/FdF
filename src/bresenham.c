@@ -6,13 +6,13 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 20:22:54 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 13:34:10 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
+static void		pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
 {
 	int i;
 
@@ -79,7 +79,8 @@ void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 	delta.dy = (b.y - a.y >= 0 ? 1 : -1);
 	delta.length_x = abs(b.x - a.x);
 	delta.length_y = abs(b.y - a.y);
-	delta.length = delta.length_x > delta.length_y ? delta.length_x : delta.length_y;
+	delta.length = delta.length_x > delta.length_y ?\
+	delta.length_x : delta.length_y;
 	if (delta.length == 0)
 		pixel_put_to_str(fdf, a.x, a.y, a.c);
 	else

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 21:40:44 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 12:29:11 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_fdf		*create_fdf(void)
 	fdf->char_map = NULL;
 	fdf->map = NULL;
 	fdf->cur_map = NULL;
+	fdf->matrix = NULL;
 	fdf->width = 0;
 	fdf->height = 0;
 	fdf->zoom = 0.0;

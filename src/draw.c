@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/04 21:41:17 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 13:42:07 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ void	draw_image(t_fdf *fdf)
 		++i;
 	}
 
-}
-
-void	isometric(t_fdf *fdf)
-{
-	rotate_z(fdf, 0.523599);
-	rotate_x(fdf, 0.785398);
 }
 
 void	ft_fdf(t_fdf *fdf)

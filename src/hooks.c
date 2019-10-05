@@ -5,17 +5,42 @@
 int		key_hook(int key_code, void *param)
 {
 	t_fdf *fdf;
+	float **matrix;
 
 	fdf = (t_fdf*)param;
 	if (key_code == MAIN_PAD_A)
 	{
-		rotate_y(fdf, 0.785398);
-		rotate_z(fdf, 0.523599);
+		fdf->matrix = change_matrix(fdf->matrix, 0.025, 2);
+		rotate(fdf, fdf->matrix);
 	}
 	else if (key_code == MAIN_PAD_S)
 	{
-		rotate_y(fdf, -0.785398);
-		rotate_z(fdf, -0.523599);
+		fdf->matrix = change_matrix(fdf->matrix, -0.025, 2);
+		rotate(fdf, fdf->matrix);
+	}
+	else if (key_code == 2)
+	{
+		fdf->matrix = change_matrix(fdf->matrix, 0.025, 1);
+		rotate(fdf, fdf->matrix);
+	}
+	else if (key_code == 3)
+	{
+		fdf->matrix = change_matrix(fdf->matrix, -0.025, 1);
+		rotate(fdf, fdf->matrix);
+	}
+	else if (key_code == 4)
+	{
+		fdf->matrix = change_matrix(fdf->matrix, 0.025, 0);
+		rotate(fdf, fdf->matrix);
+	}
+	else if (key_code == 5)
+	{
+		fdf->matrix = change_matrix(fdf->matrix, -0.025, 0);
+		rotate(fdf, fdf->matrix);
+	}
+	else if (key_code == 34)
+	{
+		isometric(fdf);
 	}
 	else if (key_code == ARROW_LEFT)
 		shift_x_y(fdf, -10, 0);

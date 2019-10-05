@@ -7,18 +7,30 @@ int		key_hook(int key_code, void *param)
 	t_fdf *fdf;
 
 	fdf = (t_fdf*)param;
-	if (key_code == 0)
-		rotate_z(fdf, 0.1);
-	else if (key_code == 1)
-		rotate_z(fdf, -0.1);
-	else if (key_code == 123)
-		shift_x(fdf, -1000);
-	else if (key_code == 124)
-		shift_x(fdf, 1000);
-	else if (key_code == 126)
-		shift_y(fdf, -1000);
-	else if (key_code == 125)
-		shift_y(fdf, 1000);
+	if (key_code == MAIN_PAD_A)
+	{
+		rotate_y(fdf, 0.785398);
+		rotate_z(fdf, 0.523599);
+	}
+	else if (key_code == MAIN_PAD_S)
+	{
+		rotate_y(fdf, -0.785398);
+		rotate_z(fdf, -0.523599);
+	}
+	else if (key_code == ARROW_LEFT)
+		shift_x_y(fdf, -10, 0);
+	else if (key_code == ARROW_RIGHT)
+		shift_x_y(fdf, 10, 0);
+	else if (key_code == ARROW_UP)
+		shift_x_y(fdf, 0, -10);
+	else if (key_code == ARROW_DOWN)
+		shift_x_y(fdf, 0, 10);
+	else if (key_code == NUM_PAD_PLUS)
+		shift_z(fdf, 555);
+	else if (key_code == NUM_PAD_MINUS)
+		shift_z(fdf, -555);
+	else if (key_code == MAIN_PAD_ESC)
+		exit(0);
 	draw_image(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 	ft_bzero(fdf->img_str, fdf->size_line * WIN_HEIGHT);

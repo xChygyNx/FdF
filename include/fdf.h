@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 21:56:10 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 10:27:06 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # include <stdio.h>
 # include "color.h"
+# include "buttons.h"
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 1024
@@ -116,9 +117,9 @@ void				ft_fdf(t_fdf *fdf);
 
 void				ft_print_vector_map(t_fdf *fdf);
 
-void				shift_x(t_fdf *fdf, int offset);
+void				shift_x_y(t_fdf *fdf, int offset_x, int offset_y);
 
-void				shift_y(t_fdf *fdf, int offset);
+void				shift_z(t_fdf *fdf, int z);
 
 /*
 **  HOOOOOOOOOKS

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 13:47:45 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 14:01:09 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void				ft_print_vector_map(t_fdf *fdf);
 void				shift_x_y(t_fdf *fdf, int offset_x, int offset_y);
 
 void				shift_z(t_fdf *fdf, int z);
+
+void				zoom(t_fdf *fdf, int keycode, double zoom);
 
 /*
 **  HOOOOOOOOOKS

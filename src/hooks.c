@@ -56,6 +56,8 @@ int		key_hook(int key_code, void *param)
 		shift_z(fdf, -555);
 	else if (key_code == MAIN_PAD_ESC)
 		exit(0);
+	else if (key_code == MAIN_PAD_PLUS || key_code == MAIN_PAD_MINUS)
+		zoom (fdf, key_code, 1.1);
 	draw_image(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 	ft_bzero(fdf->img_str, fdf->size_line * WIN_HEIGHT);

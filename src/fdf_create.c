@@ -6,13 +6,13 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 12:29:11 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:20:03 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_fdf		*create_fdf(void)
+t_fdf			*create_fdf(void)
 {
 	t_fdf	*fdf;
 
@@ -25,16 +25,44 @@ t_fdf		*create_fdf(void)
 	fdf->char_map = NULL;
 	fdf->map = NULL;
 	fdf->cur_map = NULL;
-	fdf->matrix = NULL;
+	fdf->view = NULL;
 	fdf->width = 0;
 	fdf->height = 0;
-	fdf->zoom = 0.0;
 	fdf->bpp = 0;
 	fdf->endian = 0;
 	return (fdf);
 }
 
-void		free_fdf(t_fdf **fdf_to_del)
+t_view			*create_view(void)
+{
+	t_view *view;
+
+	if (!(view = (t_view*)malloc(sizeof(t_view))))
+		return (NULL);
+	view->zoom = 1.0;
+	view->offset_x = 0;
+	view->offset_y = 0;
+	if (!(view->matrix = matrix_orto()))
+	{
+		free(view);
+		return (NULL);
+	}
+	return (view);
+}
+
+static void		free_view(t_view **view_to_del)
+{
+	t_view	*view;
+
+	if (*view_to_del)
+	{
+		free_matrix(&(*view_to_del)->matrix);
+		free(*view_to_del);
+		*view_to_del = NULL;
+	}
+}
+
+void			free_fdf(t_fdf **fdf_to_del)
 {
 	t_fdf	*fdf;
 
@@ -49,6 +77,7 @@ void		free_fdf(t_fdf **fdf_to_del)
 			ft_free_arr(fdf->char_map);
 			free_vector_map(&fdf->map, fdf->height, fdf->width);
 			free_vector_map(&fdf->cur_map, fdf->height, fdf->width);
+			free_view(&fdf->view);
 			free(*fdf_to_del);
 		}
 		*fdf_to_del = NULL;

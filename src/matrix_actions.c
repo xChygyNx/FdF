@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 13:14:48 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 13:30:36 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:25:42 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ float		**change_matrix(float **matrix, float alpha, char axis)
 {
 	float	**temp;
 
-	if (axis == 0)
+	if (axis == AXIS_X)
 		temp = matrix_x(alpha);
-	else if (axis == 1)
+	else if (axis == AXIS_Y)
 		temp = matrix_y(alpha);
-	else if (axis == 2)
+	else if (axis == AXIS_Z)
 		temp = matrix_z(alpha);
 	if (!temp)
 		return (NULL);

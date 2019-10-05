@@ -6,13 +6,13 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 13:42:07 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:23:29 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
+static void	put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
 {
 	mlx_string_put(mlx_ptr, win_ptr, 5, 0, WHITE, "put 'Ø' for to do something");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 17, WHITE, "put 'Ѻ' for to do something else");
@@ -25,7 +25,7 @@ static void refresh_screen_img(t_fdf *fdf)
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 }
 
-void	draw_image(t_fdf *fdf)
+void		draw_image(t_fdf *fdf)
 {
 	int		i;
 	int		j;
@@ -45,7 +45,7 @@ void	draw_image(t_fdf *fdf)
 
 }
 
-void	ft_fdf(t_fdf *fdf)
+void		ft_fdf(t_fdf *fdf)
 {
 	double z;
 

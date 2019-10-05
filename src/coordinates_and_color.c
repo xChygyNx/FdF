@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/03 20:57:35 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:22:49 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_atoi_fdf(t_fdf *fdf, char *str)
 	return (nb);
 }
 
-void	point_height_color(t_fdf *fdf, int i, int j, char *point)
+void		point_height_color(t_fdf *fdf, int i, int j, char *point)
 {
 	char	**hex_color;
 

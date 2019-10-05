@@ -10,38 +10,38 @@ int		key_hook(int key_code, void *param)
 	fdf = (t_fdf*)param;
 	if (key_code == MAIN_PAD_A)
 	{
-		fdf->matrix = change_matrix(fdf->matrix, 0.025, 2);
-		rotate(fdf, fdf->matrix);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.025, AXIS_X);
+		rotate(fdf, fdf->view->matrix);
 	}
 	else if (key_code == MAIN_PAD_S)
 	{
-		fdf->matrix = change_matrix(fdf->matrix, -0.025, 2);
-		rotate(fdf, fdf->matrix);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, -0.025, AXIS_X);
+		rotate(fdf, fdf->view->matrix);
 	}
 	else if (key_code == 2)
 	{
-		fdf->matrix = change_matrix(fdf->matrix, 0.025, 1);
-		rotate(fdf, fdf->matrix);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.025, AXIS_Y);
+		rotate(fdf, fdf->view->matrix);
 	}
 	else if (key_code == 3)
 	{
-		fdf->matrix = change_matrix(fdf->matrix, -0.025, 1);
-		rotate(fdf, fdf->matrix);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, -0.025, AXIS_Y);
+		rotate(fdf, fdf->view->matrix);
 	}
 	else if (key_code == 4)
 	{
-		fdf->matrix = change_matrix(fdf->matrix, 0.025, 0);
-		rotate(fdf, fdf->matrix);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.025, AXIS_Z);
+		rotate(fdf, fdf->view->matrix);
 	}
 	else if (key_code == 5)
 	{
-		fdf->matrix = change_matrix(fdf->matrix, -0.025, 0);
-		rotate(fdf, fdf->matrix);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, -0.025, AXIS_Z);
+		rotate(fdf, fdf->view->matrix);
 	}
 	else if (key_code == 34)
-	{
 		isometric(fdf);
-	}
+	else if (key_code == 31)
+		flatten(fdf);
 	else if (key_code == ARROW_LEFT)
 		shift_x_y(fdf, -10, 0);
 	else if (key_code == ARROW_RIGHT)

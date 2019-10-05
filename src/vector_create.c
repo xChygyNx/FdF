@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_vector.c                                    :+:      :+:    :+:   */
+/*   vector_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/04 21:40:30 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:29:50 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		add_height_and_width(t_fdf *fdf, char *map)
 		ft_exit(&fdf, MALLOC_FAILURE);
 }
 
-void		free_vector_map(t_vector ***map_to_del, int height, int width)
+void			free_vector_map(t_vector ***map_to_del, int height, int width)
 {
 	int			i;
 	int			j;
@@ -55,10 +55,11 @@ static void		duplicate_vector(t_fdf *fdf)
 
 	i = 0;
 	if (!(fdf->cur_map = (t_vector**)malloc(sizeof(t_vector*) * fdf->height)))
-			ft_exit(&fdf, MALLOC_FAILURE);
+		ft_exit(&fdf, MALLOC_FAILURE);
 	while (i < fdf->height)
 	{
-		if (!(fdf->cur_map[i] = (t_vector*)malloc(sizeof(t_vector) * fdf->width)))
+		if (!(fdf->cur_map[i] = (t_vector*)malloc(sizeof(t_vector)\
+		* fdf->width)))
 			ft_exit(&fdf, MALLOC_FAILURE);
 		j = 0;
 		while (j < fdf->width)
@@ -73,7 +74,7 @@ static void		duplicate_vector(t_fdf *fdf)
 	}
 }
 
-void		create_vector_map(t_fdf *fdf, char *char_map)
+void			create_vector_map(t_fdf *fdf, char *char_map)
 {
 	char	**line;
 	int		i;
@@ -100,7 +101,7 @@ void		create_vector_map(t_fdf *fdf, char *char_map)
 	duplicate_vector(fdf);
 }
 
-void		ft_print_vector_map(t_fdf *fdf)
+void			ft_print_vector_map(t_fdf *fdf)
 {
 	int i;
 	int j;

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 18:13:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 15:43:06 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 19:14:03 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,15 @@ void		rotate(t_fdf *fdf, float **matrix)
 
 void		isometric(t_fdf *fdf)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < fdf->height)
-	{
-		j = 0;
-		while (j < fdf->width)
-		{
-			fdf->cur_map[i][j].x = (fdf->map[i][j].x - fdf->map[i][j].y)\
-			* cos(0.523599);
-			fdf->cur_map[i][j].y = (fdf->map[i][j].x + fdf->map[i][j].y)\
-			* cos(0.523599) - fdf->map[i][j].z;
-			++j;
-		}
-		++i;
-	}
+	free_matrix(&fdf->view->matrix);
+	if (!(fdf->view->matrix = matrix_z(0.523599)))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (!(fdf->view->matrix = change_matrix(fdf->view->matrix, 0.523599, AXIS_X)))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	rotate(fdf, fdf->view->matrix);
+	fdf->view->off_x = 0;
+	fdf->view->off_y = 0;
+	fdf->view->zoom = 1.0;
 }
 
 void		flatten(t_fdf *fdf)
@@ -76,4 +68,9 @@ void		flatten(t_fdf *fdf)
 		}
 		++i;
 	}
+	if (!(fdf->view->matrix = matrix_orto()))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	fdf->view->off_x = 0;
+	fdf->view->off_y = 0;
+	fdf->view->zoom = 1.0;
 }

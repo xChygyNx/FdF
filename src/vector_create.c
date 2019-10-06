@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 15:29:50 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 17:06:11 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void		add_height_and_width(t_fdf *fdf, char *map)
 {
-	int		i;
 	char	**line;
 
 	if (!(fdf->char_map = ft_strsplit(map, '\n')))
@@ -31,7 +30,6 @@ static void		add_height_and_width(t_fdf *fdf, char *map)
 void			free_vector_map(t_vector ***map_to_del, int height, int width)
 {
 	int			i;
-	int			j;
 	t_vector	**map;
 
 	i = 0;

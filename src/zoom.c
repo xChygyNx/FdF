@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 10:55:25 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 15:29:13 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 19:10:39 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void		zoom(t_fdf *fdf, int keycode, double zoom)
 		j = 0;
 		while (j < fdf->width)
 		{
-			fdf->cur_map[i][j].x = fdf->map[i][j].x * cur_zoom;
-			fdf->cur_map[i][j].y = fdf->map[i][j].y * cur_zoom;
-			fdf->cur_map[i][j].z = fdf->map[i][j].z * cur_zoom;
+			fdf->cur_map[i][j].x = fdf->cur_map[i][j].x * cur_zoom;
+			fdf->cur_map[i][j].y = fdf->cur_map[i][j].y * cur_zoom;
+			fdf->cur_map[i][j].z = fdf->cur_map[i][j].z * cur_zoom;
 			j++;
 		}
 		i++;

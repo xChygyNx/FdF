@@ -6,7 +6,7 @@
 #    By: astripeb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 15:47:32 by pcredibl          #+#    #+#              #
-#    Updated: 2019/10/05 15:31:35 by astripeb         ###   ########.fr        #
+#    Updated: 2019/10/06 19:03:23 by astripeb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ endif
 
 SRC 			= fdf.c ft_exit.c fdf_create.c vector_create.c
 SRC				+= coordinates_and_color.c initialize.c bresenham.c
-SRC				+= draw.c rotation.c hooks.c shift.c matrix_create.c
+SRC				+= draw.c rotation.c hooks.c matrix_create.c
 SRC				+= matrix_actions.c zoom.c
 
 OBJ				= $(addprefix $(OBJ_PATH)/,$(SRC:.c=.o))

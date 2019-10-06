@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 15:23:29 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 18:51:34 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ void		draw_image(t_fdf *fdf)
 
 void		ft_fdf(t_fdf *fdf)
 {
-	double z;
-
-	z = 0.1;
 	mlx_key_hook(fdf->win_ptr, &key_hook, (void*)fdf);
 	mlx_loop(fdf->mlx_ptr);
 }

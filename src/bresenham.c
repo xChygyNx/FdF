@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 13:34:10 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 19:02:16 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta)
 	++delta.length;
 	while (delta.length--)
 	{
-		pixel_put_to_str(fdf, x, y, a.c);
+		pixel_put_to_str(fdf, x + fdf->view->off_x, y + fdf->view->off_y, a.c);
 		x += delta.dx;
 		d += 2 * delta.length_y;
 		if (d > 0)
@@ -60,7 +60,7 @@ static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta)
 	++delta.length;
 	while (delta.length--)
 	{
-		pixel_put_to_str(fdf, x, y, a.c);
+		pixel_put_to_str(fdf, x + fdf->view->off_x, y + fdf->view->off_y, a.c);
 		y += delta.dy;
 		d += 2 * delta.length_x;
 		if (d > 0)
@@ -82,7 +82,8 @@ void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 	delta.length = delta.length_x > delta.length_y ?\
 	delta.length_x : delta.length_y;
 	if (delta.length == 0)
-		pixel_put_to_str(fdf, a.x, a.y, a.c);
+		pixel_put_to_str(fdf, a.x + fdf->view->off_x, a.y + fdf->view->off_y,\
+		a.c);
 	else
 	{
 		if (delta.length_y <= delta.length_x)

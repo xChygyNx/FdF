@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 15:43:28 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 19:01:19 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@
 # include "color.h"
 # include "buttons.h"
 
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 1024
-# define MARGIN_FROM_FRAME 100
-# define IDENTATION 100
+# ifdef __linux__
+	# define WIN_WIDTH 800
+	# define WIN_HEIGHT 600
+	# define MARGIN_FROM_FRAME 50
+	# define IDENTATION 100
+# else
+	# define WIN_WIDTH 1920
+	# define WIN_HEIGHT 1080
+	# define MARGIN_FROM_FRAME 100
+	# define IDENTATION 100
+#endif
 
 # define USAGE  100
 # define LINE_LENGTHS 101
@@ -70,8 +77,8 @@ typedef struct 		s_delta
 
 typedef struct		s_view
 {
-	int				offset_x;	//смещение по X
-	int				offset_y;	//смещение по Y
+	int				off_x;		//смещение по X
+	int				off_y;		//смещение по Y
 	float			**matrix;	//матрица поворота
 	float			zoom;		//кратность увеличения/уменьшения
 }					t_view;

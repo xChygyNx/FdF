@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_fdf.c                                       :+:      :+:    :+:   */
+/*   fdf_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 15:20:03 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 19:02:53 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_view			*create_view(void)
 	if (!(view = (t_view*)malloc(sizeof(t_view))))
 		return (NULL);
 	view->zoom = 1.0;
-	view->offset_x = 0;
-	view->offset_y = 0;
+	view->off_x = 0;
+	view->off_y = 0;
 	if (!(view->matrix = matrix_orto()))
 	{
 		free(view);

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:02:41 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 15:11:22 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 17:09:00 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void		margin(t_fdf *fdf)
 		{
 			fdf->map[i][j].x = fdf->map[i][j].x * margin_x + MARGIN_FROM_FRAME;
 			fdf->map[i][j].y = fdf->map[i][j].y * margin_y + MARGIN_FROM_FRAME;
+			fdf->cur_map[i][j].x = fdf->map[i][j].x;
+			fdf->cur_map[i][j].y = fdf->map[i][j].y;
 			++j;
 		}
 		++i;

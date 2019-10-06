@@ -6,13 +6,14 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 10:30:02 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 17:41:52 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUTTONS_H
 # define BUTTONS_H
 
+#ifdef __APPLE__
 # define MOUSE_LEFT_BUTTON	1
 # define MOUSE_RIGHT_BUTTON	2
 # define MOUSE_THIRD_BUTTON	3
@@ -58,4 +59,29 @@
 # define MAIN_PAD_MORE		47
 # define MAIN_PAD_A			0
 # define MAIN_PAD_S			1
+# define MAIN_PAD_D 		2
+# define MAIN_PAD_F 		3
+# define MAIN_PAD_G 		4
+# define MAIN_PAD_H 		5
+# define MAIN_PAD_I 105
+# define MAIN_PAD_O 111
+#else
+	# define MAIN_PAD_A	97
+	# define MAIN_PAD_S 115
+	# define MAIN_PAD_D 100
+	# define MAIN_PAD_F 102
+	# define MAIN_PAD_G 103
+	# define MAIN_PAD_H 104
+	# define MAIN_PAD_I 105
+	# define MAIN_PAD_O 111
+	# define ARROW_UP	65362
+	# define ARROW_DOWN	65364
+	# define ARROW_LEFT	65361
+	# define ARROW_RIGHT 65363
+	# define MAIN_PAD_ESC 65307
+	# define MAIN_PAD_PLUS 61
+	# define MAIN_PAD_MINUS 45
+	# define NUM_PAD_PLUS 65453
+	# define NUM_PAD_MINUS 65451
+#endif
 #endif

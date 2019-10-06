@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 19:08:56 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 20:52:05 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,39 @@ int		key_hook(int key_code, void *param)
 
 	fdf = (t_fdf*)param;
 	ft_bzero(fdf->img_str, fdf->size_line * WIN_HEIGHT);
-	if (key_code == MAIN_PAD_A)
-	{
-		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.1, AXIS_X);
-		rotate(fdf, fdf->view->matrix);
-	}
-	else if (key_code == MAIN_PAD_S)
+	if (key_code == NUM_PAD_2)
 	{
 		fdf->view->matrix = change_matrix(fdf->view->matrix, -0.1, AXIS_X);
 		rotate(fdf, fdf->view->matrix);
 	}
-	else if (key_code == MAIN_PAD_D)
+	else if (key_code == NUM_PAD_8)
 	{
-		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.1, AXIS_Y);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.1, AXIS_X);
 		rotate(fdf, fdf->view->matrix);
 	}
-	else if (key_code == MAIN_PAD_F)
+	else if (key_code == NUM_PAD_4)
 	{
 		fdf->view->matrix = change_matrix(fdf->view->matrix, -0.1, AXIS_Y);
 		rotate(fdf, fdf->view->matrix);
 	}
-	else if (key_code == MAIN_PAD_G)
+	else if (key_code == NUM_PAD_6)
 	{
-		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.1, AXIS_Z);
+		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.1, AXIS_Y);
 		rotate(fdf, fdf->view->matrix);
 	}
-	else if (key_code == MAIN_PAD_H)
+	else if (key_code == NUM_PAD_1 || key_code == NUM_PAD_7)
 	{
 		fdf->view->matrix = change_matrix(fdf->view->matrix, -0.1, AXIS_Z);
 		rotate(fdf, fdf->view->matrix);
 	}
-	else if (key_code == MAIN_PAD_I)
+	else if (key_code == NUM_PAD_3 || key_code == NUM_PAD_9)
+	{
+		fdf->view->matrix = change_matrix(fdf->view->matrix, 0.1, AXIS_Z);
+		rotate(fdf, fdf->view->matrix);
+	}
+	else if (key_code == MAIN_PAD_I || key_code == NUM_PAD_DIV)
 		isometric(fdf);
-	else if (key_code == MAIN_PAD_O)
+	else if (key_code == MAIN_PAD_O  || key_code == NUM_PAD_0)
 		flatten(fdf);
 	else if (key_code == ARROW_LEFT)
 		fdf->view->off_x -= 10;

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 17:41:52 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 20:49:22 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define NUM_PAD_9			92
 # define NUM_PAD_PLUS		69
 # define NUM_PAD_MINUS		78
+# define NUM_PAD_DIV		75
 
 # define MAIN_PAD_ESC		53
 # define MAIN_PAD_I			34
@@ -74,14 +75,28 @@
 	# define MAIN_PAD_H 104
 	# define MAIN_PAD_I 105
 	# define MAIN_PAD_O 111
+
 	# define ARROW_UP	65362
 	# define ARROW_DOWN	65364
 	# define ARROW_LEFT	65361
 	# define ARROW_RIGHT 65363
+
 	# define MAIN_PAD_ESC 65307
 	# define MAIN_PAD_PLUS 61
 	# define MAIN_PAD_MINUS 45
+
 	# define NUM_PAD_PLUS 65453
 	# define NUM_PAD_MINUS 65451
+	# define NUM_PAD_1 65436
+	# define NUM_PAD_2 65433
+	# define NUM_PAD_3 65435
+	# define NUM_PAD_4 65430
+	# define NUM_PAD_5 65437
+	# define NUM_PAD_6 65432
+	# define NUM_PAD_7 65429
+	# define NUM_PAD_8 65431
+	# define NUM_PAD_9 65434
+	# define NUM_PAD_0 65438
+	# define NUM_PAD_DIV 65455
 #endif
 #endif

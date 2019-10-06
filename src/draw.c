@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 18:51:34 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 20:54:19 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@ static void	put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
 	mlx_string_put(mlx_ptr, win_ptr, 5, 0, WHITE, "put 'Ø' for to do something");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 17, WHITE, "put 'Ѻ' for to do something else");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 34, WHITE, "put 'ʥ' for to do something ");
-}
-
-static void refresh_screen_img(t_fdf *fdf)
-{
-	ft_bzero(fdf->img_str, fdf->size_line * WIN_HEIGHT);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 }
 
 void		draw_image(t_fdf *fdf)
@@ -47,6 +41,8 @@ void		draw_image(t_fdf *fdf)
 
 void		ft_fdf(t_fdf *fdf)
 {
+	draw_image(fdf);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 	mlx_key_hook(fdf->win_ptr, &key_hook, (void*)fdf);
 	mlx_loop(fdf->mlx_ptr);
 }

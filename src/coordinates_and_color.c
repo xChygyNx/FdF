@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 15:22:49 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 20:18:59 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void		point_height_color(t_fdf *fdf, int i, int j, char *point)
 		fdf->map[i][j].z = ft_atoi_fdf(fdf, point);
 		fdf->map[i][j].c.color = 0xFFFFFF;
 	}
-	fdf->map[i][j].x = j;
-	fdf->map[i][j].y = i;
+	fdf->map[i][j].x = j - fdf->width / 2;
+	fdf->map[i][j].y = i - fdf->height / 2;
 }

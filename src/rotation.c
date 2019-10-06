@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 18:13:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 19:14:03 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 21:04:03 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		isometric(t_fdf *fdf)
 	if (!(fdf->view->matrix = change_matrix(fdf->view->matrix, 0.523599, AXIS_X)))
 		ft_exit(&fdf, MALLOC_FAILURE);
 	rotate(fdf, fdf->view->matrix);
-	fdf->view->off_x = 0;
-	fdf->view->off_y = 0;
+	fdf->view->off_x = WIN_WIDTH / 2;
+	fdf->view->off_y = WIN_HEIGHT / 2;
 	fdf->view->zoom = 1.0;
 }
 
@@ -70,7 +70,7 @@ void		flatten(t_fdf *fdf)
 	}
 	if (!(fdf->view->matrix = matrix_orto()))
 		ft_exit(&fdf, MALLOC_FAILURE);
-	fdf->view->off_x = 0;
-	fdf->view->off_y = 0;
+	fdf->view->off_x = WIN_WIDTH / 2;
+	fdf->view->off_y = WIN_HEIGHT / 2;
 	fdf->view->zoom = 1.0;
 }

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 22:27:42 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 22:34:56 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@
 	# define MAIN_PAD_F 		3
 	# define MAIN_PAD_G 		4
 	# define MAIN_PAD_H 		5
-	# define MAIN_PAD_I 105
-	# define MAIN_PAD_O 111
+	# define MAIN_PAD_I 		105
+	# define MAIN_PAD_O 		111
 #else
 	# define MAIN_PAD_A	97
 	# define MAIN_PAD_S 115

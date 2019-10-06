@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 20:54:19 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 22:29:34 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,28 @@ void		draw_image(t_fdf *fdf)
 
 }
 
-void		ft_fdf(t_fdf *fdf)
+void		view(t_fdf *fdf)
 {
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < fdf->height)
+	{
+		j = 0;
+		while (j < fdf->width)
+		{
+			apply_matrix2vector(&fdf->cur_map[i][j], &fdf->map[i][j],\
+			fdf->view->matrix);
+			fdf->cur_map[i][j].x += fdf->view->off_x;
+			fdf->cur_map[i][j].y += fdf->view->off_y;
+			/* Зум не совсем как надо работает */
+			fdf->cur_map[i][j].x *= fdf->view->zoom;
+			fdf->cur_map[i][j].y *= fdf->view->zoom;
+			fdf->cur_map[i][j].z *= fdf->view->zoom;
+			++j;
+		}
+		++i;
+	}
 	draw_image(fdf);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
-	mlx_key_hook(fdf->win_ptr, &key_hook, (void*)fdf);
-	mlx_loop(fdf->mlx_ptr);
 }

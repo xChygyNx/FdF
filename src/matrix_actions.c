@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 13:14:48 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/05 15:25:42 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 22:19:05 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		print_matrix(float **matrix)
 	ft_printf("\n");
 }
 
-float		**change_matrix(float **matrix, float alpha, char axis)
+void		change_matrix(t_fdf *fdf, float alpha, char axis)
 {
 	float	**temp;
 
@@ -75,10 +75,13 @@ float		**change_matrix(float **matrix, float alpha, char axis)
 	else if (axis == AXIS_Z)
 		temp = matrix_z(alpha);
 	if (!temp)
-		return (NULL);
-	matrix = multiplication(matrix, temp);
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (!(fdf->view->matrix = multiplication(fdf->view->matrix, temp)))
+	{
+		free_matrix(&temp);
+		ft_exit(&fdf, MALLOC_FAILURE);
+	}
 	free_matrix(&temp);
-	return (matrix);
 }
 
 void		free_matrix(float ***matrix_to_del)

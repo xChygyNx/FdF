@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 19:01:19 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/06 22:30:52 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ void				initialize(t_fdf *fdf);
 ** DRAW FUNCTIONS
 */
 
-void				draw_image(t_fdf *fdf);
-
 void    			draw_line(t_fdf *fdf, t_vector a, t_vector b);
+
+void				view(t_fdf *fdf);
 
 /*
 **  HOOOOOOOOOKS
@@ -153,6 +153,9 @@ void				isometric(t_fdf *fdf);
 
 void				flatten(t_fdf *fdf);
 
+void				apply_matrix2vector(t_vector *cur, t_vector *src,\
+					float **mtx);
+
 /*
 **  WAKE UP NEO, MATRIX HAS YOU
 */
@@ -171,7 +174,7 @@ float				**multiplication(float **cur, float **matrix);
 
 float				**matrix_orto(void);
 
-float				**change_matrix(float **matrix, float alpha, char axis);
+void				change_matrix(t_fdf *fdf, float alpha, char axis);
 
 /*
 **  UTILITY

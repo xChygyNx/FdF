@@ -3,20 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 22:29:34 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 18:57:50 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
+void		put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
 {
-	mlx_string_put(mlx_ptr, win_ptr, 5, 0, WHITE, "put 'Ø' for to do something");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 17, WHITE, "put 'Ѻ' for to do something else");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 34, WHITE, "put 'ʥ' for to do something ");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 0, GREEN, "ROTATE:");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 17, WHITE, "on X: '2' or '8'");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 34, WHITE, "on Y: '4' or '6'");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 51, WHITE, "on Z: '1', '3', '7' or '9'");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 75, PURPLE, "SHIFT:");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 109, WHITE, "on X: LEFT & RIGHT arrows");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 92, WHITE, "on Y: UP & Down arrows");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 133, YELLOW, "ZOOM:");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 150, WHITE, "increase: '+' on main");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 167, WHITE, "reduce: '-' on main");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 191, BLUE, "Standard's views:");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 208, WHITE, "isometric: 'I' or '/'");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 225, WHITE, "view from the top: 'O' or '0'");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 249, RED, "Exit:");
+	mlx_string_put(mlx_ptr, win_ptr, 85, 266, WHITE, "Press 'Esc'");
+
 }
 
 void		draw_image(t_fdf *fdf)
@@ -58,6 +71,7 @@ void		view(t_fdf *fdf)
 			fdf->cur_map[i][j].x *= fdf->view->zoom;
 			fdf->cur_map[i][j].y *= fdf->view->zoom;
 			fdf->cur_map[i][j].z *= fdf->view->zoom;
+			//fdf->cur_map[i][j].z *= (fdf->map[i][j].z - fdf->ah) * fdf->view->relief;
 			++j;
 		}
 		++i;

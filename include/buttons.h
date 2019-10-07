@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buttons.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 22:34:56 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 11:36:59 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@
 	# define MAIN_PAD_S			1
 	# define MAIN_PAD_D 		2
 	# define MAIN_PAD_F 		3
-	# define MAIN_PAD_G 		4
-	# define MAIN_PAD_H 		5
-	# define MAIN_PAD_I 		105
-	# define MAIN_PAD_O 		111
+	# define MAIN_PAD_G 		5
+	# define MAIN_PAD_H 		4
+	# define MAIN_PAD_O 		31
 #else
 	# define MAIN_PAD_A	97
 	# define MAIN_PAD_S 115
@@ -82,8 +81,6 @@
 	# define MAIN_PAD_ESC 65307
 	# define MAIN_PAD_PLUS 61
 	# define MAIN_PAD_MINUS 45
-	# define NUM_PAD_PLUS 65453
-	# define NUM_PAD_MINUS 65451
 	# define NUM_PAD_1 65436
 	# define NUM_PAD_2 65433
 	# define NUM_PAD_3 65435

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 20:51:05 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 18:31:32 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_fdf			*create_fdf(void)
 	fdf->win_ptr = NULL;
 	fdf->img_ptr = NULL;
 	fdf->size_line = 0;
+	fdf->ah = 0;
 	fdf->char_map = NULL;
 	fdf->map = NULL;
 	fdf->cur_map = NULL;
@@ -40,7 +41,8 @@ t_view			*create_view(void)
 	if (!(view = (t_view*)malloc(sizeof(t_view))))
 		return (NULL);
 	view->zoom = 1.0;
-	view->off_x = WIN_WIDTH / 2;
+	view->relief = 1.0;
+	view->off_x = WIN_WIDTH / 2 + IDENTATION;
 	view->off_y = WIN_HEIGHT / 2;
 	if (!(view->matrix = matrix_orto()))
 	{

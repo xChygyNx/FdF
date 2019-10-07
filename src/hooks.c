@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 22:26:08 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 15:41:30 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,18 @@ int		key_hook(int key_code, void *param)
 		fdf->view->off_y -= 10;
 	else if (key_code == ARROW_DOWN)
 		fdf->view->off_y += 10;
-	else if (key_code == MAIN_PAD_PLUS || key_code == NUM_PAD_PLUS)
+	else if (key_code == MAIN_PAD_PLUS)
 		fdf->view->zoom += 0.25;
-	else if (key_code == MAIN_PAD_MINUS || key_code == NUM_PAD_MINUS)
+	else if (key_code == MAIN_PAD_MINUS)
 		fdf->view->zoom -= 0.25;
+	else if (key_code == NUM_PAD_MINUS)
+		change_relief(fdf, -3);
+	else if (key_code == NUM_PAD_PLUS)
+		change_relief(fdf, 3);
 	else if (key_code == MAIN_PAD_ESC)
 		exit(0);
 	view(fdf);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, IDENTATION, 0);
 	ft_printf("key %d\n", key_code);
 	return (42);
 }

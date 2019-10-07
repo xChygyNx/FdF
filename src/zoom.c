@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 10:55:25 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 19:10:39 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 11:50:31 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,23 @@ t_vector	find_center(t_fdf *fdf)
 void		zoom(t_fdf *fdf, int keycode, double zoom)
 {
 	t_vector		center;
-	static double	cur_zoom = 1.0;
 	int				i;
 	int				j;
 
-	cur_zoom = keycode == MAIN_PAD_PLUS ? cur_zoom * zoom : cur_zoom / zoom;
+	fdf->view->zoom = keycode == MAIN_PAD_PLUS ?\
+		fdf->view->zoom * zoom : fdf->view->zoom / zoom;
 	center = find_center(fdf);
 	i = 0;
+	fdf->view->off_x *= zoom;
+	fdf->view->off_y *= zoom;
 	while (i < fdf->height)
 	{
 		j = 0;
 		while (j < fdf->width)
 		{
-			fdf->cur_map[i][j].x = fdf->cur_map[i][j].x * cur_zoom;
-			fdf->cur_map[i][j].y = fdf->cur_map[i][j].y * cur_zoom;
-			fdf->cur_map[i][j].z = fdf->cur_map[i][j].z * cur_zoom;
+			fdf->cur_map[i][j].x += (fdf->cur_map[i][j].x - center.x) * fdf->view->zoom;
+			fdf->cur_map[i][j].y += (fdf->cur_map[i][j].y - center.y) * fdf->view->zoom;
+			fdf->cur_map[i][j].z += (fdf->cur_map[i][j].z - center.z) * fdf->view->zoom;
 			j++;
 		}
 		i++;

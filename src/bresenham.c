@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 22:06:12 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 20:53:31 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ static void		pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
 	}
 }
 
-static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta)
+static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors)
 {
 	int d;
 	int x;
 	int y;
+	unsigned int	*color;
 
 	x = a.x;
 	y = a.y;
@@ -37,7 +38,7 @@ static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta)
 	++delta.length;
 	while (delta.length--)
 	{
-		pixel_put_to_str(fdf, x, y, a.c);
+		pixel_put_to_str(fdf, x, y, colors[delta.length - 1]);
 		x += delta.dx;
 		d += 2 * delta.length_y;
 		if (d > 0)
@@ -48,7 +49,7 @@ static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta)
 	}
 }
 
-static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta)
+static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors)
 {
 	int d;
 	int x;
@@ -60,7 +61,7 @@ static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta)
 	++delta.length;
 	while (delta.length--)
 	{
-		pixel_put_to_str(fdf, x, y, a.c);
+		pixel_put_to_str(fdf, x, y, colors[delta.length - 1]);
 		y += delta.dy;
 		d += 2 * delta.length_x;
 		if (d > 0)
@@ -74,6 +75,7 @@ static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta)
 void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 {
 	t_delta delta;
+	t_color	*colors;
 
 	delta.dx = (b.x - a.x >= 0 ? 1 : -1);
 	delta.dy = (b.y - a.y >= 0 ? 1 : -1);
@@ -81,13 +83,15 @@ void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 	delta.length_y = abs(b.y - a.y);
 	delta.length = delta.length_x > delta.length_y ?\
 	delta.length_x : delta.length_y;
+	colors = gradient(a, b, delta.length);
 	if (delta.length == 0)
 		pixel_put_to_str(fdf, a.x, a.y, a.c);
 	else
 	{
 		if (delta.length_y <= delta.length_x)
-			draw_along_x(fdf, a, delta);
+			draw_along_x(fdf, a, delta, colors);
 		else
-			draw_along_y(fdf, a, delta);
+			draw_along_y(fdf, a, delta, colors);
 	}
+	free(colors);
 }

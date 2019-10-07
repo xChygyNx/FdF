@@ -6,11 +6,17 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:47:35 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/05 15:50:16 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/07 18:32:29 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	null_tab(int *tab, int size)
+{
+	while (size--)
+		tab[size] = 0;
+}
 
 static int	max_height(t_fdf *fdf)
 {
@@ -39,9 +45,8 @@ static int	*create_height_arr(t_fdf *fdf)
 	int		i;
 	int		j;
 	int		*height_arr;
-	
 	height_arr = (int*)malloc(sizeof(int) * max_height(fdf) + 1);
-	ft_bzero((void*)height_arr, (size_t)max_height(fdf + 1));
+	null_tab(height_arr, max_height(fdf) + 1);
 	i = 0;
 	while (i < fdf->height)
 	{
@@ -53,7 +58,6 @@ static int	*create_height_arr(t_fdf *fdf)
 		}
 		i++;
 	}
-	free(height_arr);
 	return(height_arr);
 }
 
@@ -65,25 +69,45 @@ static int	average_height(t_fdf *fdf)
 	int		same_heights_count;
 
 	height_arr = create_height_arr(fdf);
-	var_heights_count = max_height(fdf) + 2;
-	same_heights_count = fdf->map[0][0].z;
+	var_heights_count = max_height(fdf) + 1;
+	same_heights_count = 0;
 	while (var_heights_count--)
 	{
-		if (height_arr[var_heights_count - 1] > same_heights_count)
+		if (height_arr[var_heights_count] > same_heights_count)
 		{
-			same_heights_count = height_arr[var_heights_count - 1];
-			most_frequently_height = var_heights_count - 1;
+			same_heights_count = height_arr[var_heights_count];
+			most_frequently_height = var_heights_count;
 		}
 	}
+	free(height_arr);
 	return(most_frequently_height);
 }
 
 void	change_relief(t_fdf *fdf, int dif)
 {
 	int			ah;
-	static int	k;
+	int			i;
+	int			j;
 
-	ah = average_height(fdf);
+	fdf->ah = average_height(fdf);
+	/*i = 0;
+	j = 0;
+	while (i < fdf->height)
+	{
+		j = 0;
+		while (j < fdf->width)
+		{
+//			ft_printf("arr[%d][%d].z = %d\n", i, j, fdf->cur_map[i][j].z);
+			if (dif > 0)
+				fdf->map[i][j].z += (fdf->map[i][j].z - ah) * (1 + 1.0 / dif);
+			else
+				fdf->map[i][j].z += (fdf->map[i][j].z - ah) / dif;
+			ft_printf("arr[%d][%d].z = %d\n", i, j, fdf->cur_map[i][j].z);
+			j++;
+		}
+		i++;
+	}*/
+
 
 
 }

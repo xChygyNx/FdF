@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 22:34:26 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/07 19:37:32 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 	# define MARGIN_FROM_FRAME 50
 	# define IDENTATION 100
 # else
-	# define WIN_WIDTH 1920
-	# define WIN_HEIGHT 1080
+	# define WIN_WIDTH 2800
+	# define WIN_HEIGHT 1500
 	# define MARGIN_FROM_FRAME 100
-	# define IDENTATION 100
+	# define IDENTATION 400
 #endif
 
 # define USAGE  100
@@ -81,6 +81,7 @@ typedef struct		s_view
 	int				off_y;		//смещение по Y
 	float			**matrix;	//матрица поворота
 	float			zoom;		//кратность увеличения/уменьшения
+	float			relief;		//коэффициент рельефа
 }					t_view;
 
 typedef struct		s_fdf
@@ -91,6 +92,7 @@ typedef struct		s_fdf
 	void			*img_ptr;	//указатель на изображение
 	char			*img_str;	//строка-изображение len(size_line * height)
 	int				size_line;	//длина строки строки (WIN_WIDTH * bit_per_pixel / 8)
+	int				ah;			//средняя высота карты
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
 	int				bpp;		//бит на пиксель
@@ -129,6 +131,8 @@ void    			draw_line(t_fdf *fdf, t_vector a, t_vector b);
 
 void				view(t_fdf *fdf);
 
+t_color				*gradient(t_vector a, t_vector b, int len);
+
 /*
 **  HOOOOOOOOOKS
 */
@@ -156,6 +160,8 @@ void				flatten(t_fdf *fdf);
 void				apply_matrix2vector(t_vector *cur, t_vector *src,\
 					float **mtx);
 
+void				change_relief(t_fdf *fdf, int dif);
+
 /*
 **  WAKE UP NEO, MATRIX HAS YOU
 */
@@ -175,6 +181,8 @@ float				**multiplication(float **cur, float **matrix);
 float				**matrix_orto(void);
 
 void				change_matrix(t_fdf *fdf, float alpha, char axis);
+
+void				put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr);
 
 /*
 **  UTILITY

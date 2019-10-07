@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/07 18:31:32 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/07 21:55:11 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_view			*create_view(void)
 		return (NULL);
 	view->zoom = 1.0;
 	view->relief = 1.0;
-	view->off_x = WIN_WIDTH / 2 + IDENTATION;
+	view->off_x = IMG_WIDTH / 2;
 	view->off_y = WIN_HEIGHT / 2;
 	if (!(view->matrix = matrix_orto()))
 	{

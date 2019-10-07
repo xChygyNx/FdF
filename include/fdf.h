@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/07 19:37:32 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/07 22:44:21 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@
 # include "buttons.h"
 
 # ifdef __linux__
-	# define WIN_WIDTH 800
-	# define WIN_HEIGHT 600
-	# define MARGIN_FROM_FRAME 50
-	# define IDENTATION 100
+	# define WIN_WIDTH 1200
+	# define WIN_HEIGHT 800
+	# define IMG_WIDTH 900	//WIN_WIDTH - INDENT
+	# define IMG_HEIGHT 800
+	# define MARGIN 50
+	# define INDENT 300
 # else
 	# define WIN_WIDTH 2800
 	# define WIN_HEIGHT 1500
-	# define MARGIN_FROM_FRAME 100
-	# define IDENTATION 400
+	# define IMG_WIDTH 2500	//WIN_WIDTH - INDENT
+	# define IMG_HEIGHT 1500
+	# define MARGIN 100
+	# define INDENT 400
 #endif
 
 # define USAGE  100
@@ -133,6 +137,8 @@ void				view(t_fdf *fdf);
 
 t_color				*gradient(t_vector a, t_vector b, int len);
 
+void				put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr);
+
 /*
 **  HOOOOOOOOOKS
 */
@@ -181,8 +187,6 @@ float				**multiplication(float **cur, float **matrix);
 float				**matrix_orto(void);
 
 void				change_matrix(t_fdf *fdf, float alpha, char axis);
-
-void				put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr);
 
 /*
 **  UTILITY

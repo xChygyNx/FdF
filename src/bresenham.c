@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/07 20:53:31 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/07 22:16:27 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void		pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
+static void	pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
 {
 	int i;
 
-	if ((x >= 0 && x < WIN_WIDTH) && (y >= 0 && y < WIN_HEIGHT))
+	if ((x >= 0 && x < IMG_WIDTH) && (y >= 0 && y < IMG_HEIGHT))
 	{
 		i = y * fdf->size_line + x * 4;
 		fdf->img_str[i] = color.t_rgb.blue;
@@ -25,7 +25,7 @@ static void		pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
 	}
 }
 
-static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors)
+static void	draw_along_x(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors)
 {
 	int d;
 	int x;
@@ -49,7 +49,7 @@ static void		draw_along_x(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors
 	}
 }
 
-static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors)
+static void	draw_along_y(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors)
 {
 	int d;
 	int x;
@@ -72,7 +72,7 @@ static void		draw_along_y(t_fdf *fdf, t_vector a, t_delta delta, t_color *colors
 	}
 }
 
-void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
+void		draw_line(t_fdf *fdf, t_vector a, t_vector b)
 {
 	t_delta delta;
 	t_color	*colors;

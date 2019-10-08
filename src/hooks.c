@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/08 17:10:10 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/08 22:40:50 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		key_hook(int key_code, void *param)
 	t_fdf *fdf;
 
 	fdf = (t_fdf*)param;
-	ft_bzero(fdf->img_str, fdf->size_line * WIN_HEIGHT);
+	ft_bzero(fdf->img_str, fdf->size_line * IMG_HEIGHT);
 	if (key_code == NUM_PAD_2)
 		change_matrix(fdf, -0.1, AXIS_X);
 	else if (key_code == NUM_PAD_8)

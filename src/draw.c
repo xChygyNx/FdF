@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/08 19:35:59 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/08 22:56:35 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	draw_image(t_fdf *fdf, char mode)
 		}
 		mode == 2 || mode == 4 ? ++i : i--;
 	}
-
 }
 
 static char	print_mode(t_fdf *fdf)
@@ -59,14 +58,14 @@ static char	print_mode(t_fdf *fdf)
 
 	w = fdf->width - 1;
 	h = fdf->height - 1;
-	if (fdf->cur_map[0][0].x < fdf->cur_map[w][h].x\
-		&& fdf->cur_map[0][0].y > fdf->cur_map[w][h].y)
+	if (fdf->cur_map[0][0].x < fdf->cur_map[h][w].x\
+		&& fdf->cur_map[0][0].y > fdf->cur_map[h][w].y)
 		return (1);
-	else if (fdf->cur_map[0][0].x < fdf->cur_map[w][h].x\
-		&& fdf->cur_map[0][0].y < fdf->cur_map[w][h].y)
+	else if (fdf->cur_map[0][0].x < fdf->cur_map[h][w].x\
+		&& fdf->cur_map[0][0].y < fdf->cur_map[h][w].y)
 		return (2);
-	else if (fdf->cur_map[0][0].x > fdf->cur_map[w][h].x\
-		&& fdf->cur_map[0][0].y > fdf->cur_map[w][h].y)
+	else if (fdf->cur_map[0][0].x > fdf->cur_map[h][w].x\
+		&& fdf->cur_map[0][0].y > fdf->cur_map[h][w].y)
 		return (3);
 	else
 		return (4);
@@ -81,28 +80,23 @@ void		view(t_fdf *fdf)
 
 	i = 0;
 	ah = average_height(fdf);
-	//ft_printf("relief = %f, ah = %d\n", fdf->view->relief, ah);
 	while (i < fdf->height)
 	{
 		j = 0;
 		while (j < fdf->width)
 		{
-	//		ft_printf("map.z = %d     ", fdf->cur_map[i][j].z);
 			apply_matrix2vector(&fdf->cur_map[i][j], &fdf->map[i][j],\
 			fdf->view->matrix);
+			fdf->cur_map[i][j].z += (fdf->map[i][j].z - ah) * fdf->view->relief;
 			fdf->cur_map[i][j].x *= fdf->view->zoom;
 			fdf->cur_map[i][j].y *= fdf->view->zoom;
 			fdf->cur_map[i][j].z *= fdf->view->zoom;
 			fdf->cur_map[i][j].x += fdf->view->off_x;
 			fdf->cur_map[i][j].y += fdf->view->off_y;
-			fdf->cur_map[i][j].z += (fdf->map[i][j].z - ah) * fdf->view->relief;
-	//		ft_printf("map.z = %d\n", fdf->cur_map[i][j].z);
 			++j;
 		}
 		++i;
 	}
 	mode = print_mode(fdf);
-	//print_matrix(fdf->view->matrix);
-	//ft_printf("relief = %f\n", fdf->view->relief);
 	draw_image(fdf, mode);
 }

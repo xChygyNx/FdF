@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/08 17:11:18 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/08 22:07:54 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,6 @@ void				initialize(t_fdf *fdf);
 void    			draw_line(t_fdf *fdf, t_vector a, t_vector b);
 
 void				view(t_fdf *fdf);
-
-unsigned int		get_color(t_vector a, t_vector b, int cur, char axis);
 
 void				put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/07 22:44:21 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/08 17:11:18 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void    			draw_line(t_fdf *fdf, t_vector a, t_vector b);
 
 void				view(t_fdf *fdf);
 
-t_color				*gradient(t_vector a, t_vector b, int len);
+unsigned int		get_color(t_vector a, t_vector b, int cur, char axis);
 
 void				put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr);
 
@@ -189,7 +189,13 @@ float				**matrix_orto(void);
 void				change_matrix(t_fdf *fdf, float alpha, char axis);
 
 /*
-**  UTILITY
+**	UTILITY
+*/
+
+int					average_height(t_fdf *fdf);
+
+/*
+**  UTILITY (delete before evaluation)
 */
 
 void				print_matrix(float **matrix);

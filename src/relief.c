@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:47:35 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/07 18:32:29 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/08 17:10:10 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	*create_height_arr(t_fdf *fdf)
 	return(height_arr);
 }
 
-static int	average_height(t_fdf *fdf)
+int			average_height(t_fdf *fdf)
 {
 	int		var_heights_count;
 	int		*height_arr;
@@ -80,34 +80,27 @@ static int	average_height(t_fdf *fdf)
 		}
 	}
 	free(height_arr);
+//	ft_printf("------------------------------------\n");
 	return(most_frequently_height);
 }
 
-void	change_relief(t_fdf *fdf, int dif)
+/*void	change_relief(t_fdf *fdf, int dif)
 {
 	int			ah;
 	int			i;
 	int			j;
 
 	fdf->ah = average_height(fdf);
-	/*i = 0;
+	i = 0;
 	j = 0;
 	while (i < fdf->height)
 	{
 		j = 0;
 		while (j < fdf->width)
 		{
-//			ft_printf("arr[%d][%d].z = %d\n", i, j, fdf->cur_map[i][j].z);
-			if (dif > 0)
-				fdf->map[i][j].z += (fdf->map[i][j].z - ah) * (1 + 1.0 / dif);
-			else
-				fdf->map[i][j].z += (fdf->map[i][j].z - ah) / dif;
-			ft_printf("arr[%d][%d].z = %d\n", i, j, fdf->cur_map[i][j].z);
+			fdf->map[i][j].z 
 			j++;
 		}
 		i++;
-	}*/
-
-
-
-}
+	}
+}*/

@@ -6,13 +6,13 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 13:14:48 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/06 22:19:05 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 19:17:11 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-float		**multiplication(float **cur, float **matrix)
+float			**multiplication(float **cur, float **matrix)
 {
 	float	**new_matrix;
 	int		i;
@@ -41,7 +41,7 @@ float		**multiplication(float **cur, float **matrix)
 	return (new_matrix);
 }
 
-void		print_matrix(float **matrix)
+void			print_matrix(float **matrix)
 {
 	int i;
 	int j;
@@ -64,18 +64,32 @@ void		print_matrix(float **matrix)
 	ft_printf("\n");
 }
 
-void		change_matrix(t_fdf *fdf, float alpha, char axis)
+static float	round_pi(float alpha)
+{
+	if (fabs(alpha) > 6.26)
+		alpha += alpha > 0.0 ? -6.28 : 6.28;
+	return (alpha);
+}
+
+void			change_matrix(t_fdf *fdf, float alpha, char axis)
 {
 	float	**temp;
 
 	if (axis == AXIS_X)
+	{
 		temp = matrix_x(alpha);
+		fdf->view->x = round_pi(fdf->view->x + alpha);
+	}
 	else if (axis == AXIS_Y)
+	{
 		temp = matrix_y(alpha);
+		fdf->view->y = round_pi(fdf->view->y + alpha);
+	}
 	else if (axis == AXIS_Z)
+	{
 		temp = matrix_z(alpha);
-	if (!temp)
-		ft_exit(&fdf, MALLOC_FAILURE);
+		fdf->view->z = round_pi(fdf->view->z + alpha);
+	}
 	if (!(fdf->view->matrix = multiplication(fdf->view->matrix, temp)))
 	{
 		free_matrix(&temp);
@@ -84,7 +98,7 @@ void		change_matrix(t_fdf *fdf, float alpha, char axis)
 	free_matrix(&temp);
 }
 
-void		free_matrix(float ***matrix_to_del)
+void			free_matrix(float ***matrix_to_del)
 {
 	float	**matrix;
 	int		i;

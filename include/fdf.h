@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 12:39:57 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/09 19:03:10 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define AXIS_X 7
 # define AXIS_Y 8
 # define AXIS_Z 9
+# define PI 3.14159265359
 
 enum				e_bool
 {
@@ -86,6 +87,9 @@ typedef struct		s_view
 	float			**matrix;	//матрица поворота
 	float			zoom;		//кратность увеличения/уменьшения
 	float			relief;		//коэффициент рельефа
+	float			x;
+	float			y;
+	float			z;
 }					t_view;
 
 typedef struct		s_fdf

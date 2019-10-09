@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 18:13:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/07 21:58:46 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:35:04 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ void		apply_matrix2vector(t_vector *cur, t_vector *src, float **mtx)
 void		isometric(t_fdf *fdf)
 {
 	free_matrix(&fdf->view->matrix);
-	if (!(fdf->view->matrix = matrix_z(0.523599)))
+	if (!(fdf->view->matrix = matrix_x(0.615472907)))
 		ft_exit(&fdf, MALLOC_FAILURE);
-	change_matrix(fdf, 0.523599, AXIS_X);
+	change_matrix(fdf, 0.785398, AXIS_Z);
 	fdf->view->off_x = IMG_WIDTH / 2;
 	fdf->view->off_y = IMG_HEIGHT / 2;
-	fdf->view->zoom = 1.0;
+	fdf->view->zoom = 0.7;
+	fdf->view->x = 0.615472907;
+	fdf->view->z = 0.785398;
+	fdf->view->y = 0.0;
 }
 
 void		flatten(t_fdf *fdf)
@@ -38,4 +41,7 @@ void		flatten(t_fdf *fdf)
 	fdf->view->off_x = IMG_WIDTH / 2;
 	fdf->view->off_y = IMG_HEIGHT / 2;
 	fdf->view->zoom = 1.0;
+	fdf->view->x = 0.0;
+	fdf->view->z = 0.0;
+	fdf->view->y = 0.0;
 }

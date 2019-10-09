@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/06 20:18:59 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 20:50:02 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	point_color(t_fdf *fdf, char *color16)
 		ft_exit(&fdf, INVALID_COLOR);
 	return (color);
 }
-
+/*
 static int	ft_atoi_fdf(t_fdf *fdf, char *str)
 {
 	long int		nb;
@@ -51,6 +51,21 @@ static int	ft_atoi_fdf(t_fdf *fdf, char *str)
 	if (*str || flag)
 		ft_exit(&fdf, INVALID_HEIGHT);
 	return (nb);
+}
+*/
+
+static int	ft_atoi_fdf(t_fdf *fdf, char *str)
+{
+	int		nbr;
+	char	*nbr_s;
+
+	nbr = ft_atoi(str);
+	if (!(nbr_s = ft_itoa(nbr)))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (ft_strlen(nbr_s) != ft_strlen(str))
+		ft_exit(&fdf, INVALID_INT);
+	free(nbr_s);
+	return (nbr);
 }
 
 void		point_height_color(t_fdf *fdf, int i, int j, char *point)

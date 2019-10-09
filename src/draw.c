@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/09 19:28:28 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 20:34:22 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_left_right(t_fdf *fdf, int i)
 	int j;
 
 	j = 0;
-	while (j < fdf->height)
+	while (j < fdf->width)
 	{
 		i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;
 		j ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i][j - 1]) : 0;
@@ -52,7 +52,7 @@ static void	draw_right_left(t_fdf *fdf, int i)
 {
 	int j;
 
-	j = fdf->height - 1;
+	j = fdf->width - 1;
 	while (j >= 0)
 	{
 		i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;

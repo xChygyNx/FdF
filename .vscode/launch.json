@@ -10,12 +10,12 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/fdf",
-            "args": ["maps/pylone.fdf"],
+            "args": ["maps/Japan.L.fdf"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb"
+            "MIMode": "lldb"
         }
     ]
 }

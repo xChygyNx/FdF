@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/08 19:35:59 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/08 21:50:25 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,41 @@ void		put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
 
 }
 
-static void	draw_image(t_fdf *fdf, char mode)
+static void	draw_image_x(t_fdf *fdf, char mode)
 {
 	int		i;
 	int		j;
 
-	i = mode == 2 || mode == 4 ? 0 : fdf->height - 1;
-	while (mode == 2 || mode == 4 ? i < fdf->height : i >= 0)
+	i = mode == 4 ? 0 : fdf->height - 1;
+	while (mode == 4 ? i < fdf->height : i >= 0)
 	{
-		j = mode == 1 || mode == 3 ? 0 : fdf->width - 1;
-		while (mode == 1 || mode == 3 ? j < fdf->width : j >= 0)
+		j = mode == 4 ? 0 : fdf->width - 1;
+		while (mode == 4 ? j < fdf->width : j >= 0)
 		{
 			i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;
 			j ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i][j - 1]) : 0;
-			mode == 1 || mode == 3 ? ++j : j--;
+			mode == 4 ? ++j : j--;
 		}
-		mode == 2 || mode == 4 ? ++i : i--;
+		mode == 4 ? ++i : i--;
+	}
+}
+
+static void	draw_image_y(t_fdf *fdf, char mode)
+{
+	int		i;
+	int		j;
+
+	i = mode == 2 ? fdf->width : 0;
+	while (mode == 2 ? i >= 0 : i < fdf->width)
+	{
+		j = mode == 2 ? 0 : fdf->height - 1;
+		while (mode == 2 ? j < fdf->width : j >= 0)
+		{
+			i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;
+			j ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i][j - 1]) : 0;
+			mode == 2 ? ++j : j--;
+		}
+		mode == 2 ? ++i : i--;
 	}
 
 }
@@ -59,14 +78,14 @@ static char	print_mode(t_fdf *fdf)
 
 	w = fdf->width - 1;
 	h = fdf->height - 1;
-	if (fdf->cur_map[0][0].x < fdf->cur_map[w][h].x\
-		&& fdf->cur_map[0][0].y > fdf->cur_map[w][h].y)
+	if (fdf->cur_map[0][0].y > fdf->cur_map[w][0].y\
+		&& fdf->cur_map[0][0].y > fdf->cur_map[0][h].y)
 		return (1);
-	else if (fdf->cur_map[0][0].x < fdf->cur_map[w][h].x\
-		&& fdf->cur_map[0][0].y < fdf->cur_map[w][h].y)
+	else if (fdf->cur_map[0][0].y > fdf->cur_map[w][0].y\
+		&& fdf->cur_map[0][0].y < fdf->cur_map[0][h].y)
 		return (2);
-	else if (fdf->cur_map[0][0].x > fdf->cur_map[w][h].x\
-		&& fdf->cur_map[0][0].y > fdf->cur_map[w][h].y)
+	else if (fdf->cur_map[0][0].y < fdf->cur_map[w][0].y\
+		&& fdf->cur_map[0][0].y > fdf->cur_map[0][h].y)
 		return (3);
 	else
 		return (4);
@@ -104,5 +123,5 @@ void		view(t_fdf *fdf)
 	mode = print_mode(fdf);
 	//print_matrix(fdf->view->matrix);
 	//ft_printf("relief = %f\n", fdf->view->relief);
-	draw_image(fdf, mode);
+	mode == 1 || mode == 4 ? draw_image_x(fdf, mode) : draw_image_y(fdf, mode);
 }

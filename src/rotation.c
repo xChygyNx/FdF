@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 18:13:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 16:35:04 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 19:33:55 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,17 @@ void		flatten(t_fdf *fdf)
 	fdf->view->x = 0.0;
 	fdf->view->z = 0.0;
 	fdf->view->y = 0.0;
+}
+
+void		profile(float **matrix)
+{
+	matrix[0][0] = 1.0;
+	matrix[0][1] = 0.0;
+	matrix[0][2] = matrix[0][1];
+	matrix[1][0] = matrix[0][1];
+	matrix[1][1] = matrix[0][1];
+	matrix[1][2] = -matrix[0][0];
+	matrix[2][0] = matrix[0][1];
+	matrix[2][1] = matrix[0][0];
+	matrix[2][2] = matrix[0][1];
 }

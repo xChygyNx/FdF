@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/08 22:20:51 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 19:50:16 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static t_color	get_color(t_vector a, t_vector b, int cur, int len)
 {
-	float			coef;
-	t_color 		c;
+	float	coef;
+	t_color	c;
 
 	coef = (float)cur / len;
-	c.t_rgb.red = (char)((1 - coef) * b.c.t_rgb.red + coef * a.c.t_rgb.red);
-	c.t_rgb.green = (char)((1 - coef) * b.c.t_rgb.green + coef * a.c.t_rgb.green);
-	c.t_rgb.blue = (char)((1 - coef) * b.c.t_rgb.blue + coef * a.c.t_rgb.blue);
-	return(c);
+	c.t_rgb.red = (char)((1 - coef) * b.c.t_rgb.red + coef *\
+	a.c.t_rgb.red);
+	c.t_rgb.green = (char)((1 - coef) * b.c.t_rgb.green + coef *\
+	a.c.t_rgb.green);
+	c.t_rgb.blue = (char)((1 - coef) * b.c.t_rgb.blue + coef *\
+	a.c.t_rgb.blue);
+	return (c);
 }
 
 static void		pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)

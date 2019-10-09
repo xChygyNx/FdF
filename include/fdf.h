@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 19:03:10 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 19:34:21 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,8 @@ void				rotate(t_fdf *fdf, float **matrix);
 void				isometric(t_fdf *fdf);
 
 void				flatten(t_fdf *fdf);
+
+void				profile(float **matrix);
 
 void				apply_matrix2vector(t_vector *cur, t_vector *src,\
 					float **mtx);

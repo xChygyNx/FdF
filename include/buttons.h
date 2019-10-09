@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/07 11:36:59 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:25:06 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 	# define NUM_PAD_PLUS		69
 	# define NUM_PAD_MINUS		78
 	# define NUM_PAD_DIV		75
+	# define NUM_PAD_EQUAL		81
 
 	# define MAIN_PAD_ESC		53
 	# define MAIN_PAD_I			34
@@ -65,6 +66,7 @@
 	# define MAIN_PAD_G 		5
 	# define MAIN_PAD_H 		4
 	# define MAIN_PAD_O 		31
+	# define MAIN_PAD_P 		35
 #else
 	# define MAIN_PAD_A	97
 	# define MAIN_PAD_S 115

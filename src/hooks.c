@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 19:59:01 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 21:22:06 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ int		key_hook(int key_code, void *param)
 	else if (key_code == ARROW_DOWN)
 		fdf->view->off_y += 10;
 	else if (key_code == MAIN_PAD_PLUS)
-		fdf->view->zoom += 0.25;
+		fdf->view->zoom *= 1.5;
 	else if (key_code == MAIN_PAD_MINUS)
-		fdf->view->zoom -= 0.25;
+		fdf->view->zoom /= 1.5;
 	else if (key_code == NUM_PAD_MINUS)
 		fdf->view->relief -= 0.25;
 	else if (key_code == NUM_PAD_PLUS)

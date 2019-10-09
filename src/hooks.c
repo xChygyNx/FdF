@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 14:23:02 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:25:06 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,12 @@ static int	define_area(int x, int y)
 	
 }	
 
-static int	close_window(void *param)
-{
-	(void)param;
-	exit(ft_fprintf(2, "You click on 'X'\n"));
-}
-
 int		mouse_hook(int button, int x, int y, void *param)
 {
 	int		area;
 	t_fdf	*fdf;
 
 	fdf = (t_fdf*)param;
-	//mlx_hook(fdf->win_ptr, 17, 0, (int (*)())exit, (void*) fdf);
 	ft_bzero(fdf->img_str, fdf->size_line * IMG_HEIGHT);
 	area = define_area(x, y);
 	button == MOUSE_SCROLL_UP ? fdf->view->zoom += 0.25 : 0;
@@ -64,7 +57,6 @@ int		mouse_hook(int button, int x, int y, void *param)
 	button == MOUSE_LEFT_BUTTON && area == 9 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
 	view(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, INDENT, 0);
-	ft_printf("button = %d, x = %d, y = %d, area = %d\n", button, x, y, area);
 	return (21);
 }
 
@@ -88,6 +80,8 @@ int		key_hook(int key_code, void *param)
 		change_matrix(fdf, 0.1, AXIS_Z);
 	else if (key_code == MAIN_PAD_I || key_code == NUM_PAD_DIV)
 		isometric(fdf);
+	else if (key_code == MAIN_PAD_P || key_code == NUM_PAD_EQUAL)
+		profile(fdf->view->matrix);
 	else if (key_code == MAIN_PAD_O  || key_code == NUM_PAD_0)
 		flatten(fdf);
 	else if (key_code == ARROW_LEFT)

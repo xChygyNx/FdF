@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 18:13:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/07 21:58:46 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:33:18 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ void		flatten(t_fdf *fdf)
 	fdf->view->off_x = IMG_WIDTH / 2;
 	fdf->view->off_y = IMG_HEIGHT / 2;
 	fdf->view->zoom = 1.0;
+}
+
+void		profile(float **matrix)
+{
+	matrix[0][0] = 1.0;
+	matrix[0][1] = 0.0;
+	matrix[0][2] = 0.0;
+	matrix[1][0] = 0.0;
+	matrix[1][1] = 0.0;
+	matrix[1][2] = -1.0;
+	matrix[2][0] = 0.0;
+	matrix[2][1] = 1.0;
+	matrix[2][2] = 0.0;
 }

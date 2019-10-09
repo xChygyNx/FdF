@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 12:39:57 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:24:42 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ void				rotate(t_fdf *fdf, float **matrix);
 void				isometric(t_fdf *fdf);
 
 void				flatten(t_fdf *fdf);
+
+void				profile(float **matrix);
 
 void				apply_matrix2vector(t_vector *cur, t_vector *src,\
 					float **mtx);

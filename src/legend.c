@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:43:41 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 13:24:07 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 13:34:13 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,27 @@ static void	put_zoom_relief_info(void *mlx_ptr, void *win_ptr, void *img_ptr)
 {
 	mlx_string_put(mlx_ptr, win_ptr, 5, 300, RED, "ZOOM:");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 320, YELLOW, "Increase:");
-	mlx_string_put(mlx_ptr, win_ptr, 105, 320, WHITE, "'+' on main keyboard");
+	mlx_string_put(mlx_ptr, win_ptr, 105, 320, WHITE, "Key '+' on main keyboard");
 	mlx_string_put(mlx_ptr, win_ptr, 105, 340, WHITE, "or scroll down by mouse");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 360, YELLOW, "Reduce:");
-	mlx_string_put(mlx_ptr, win_ptr, 105, 360, WHITE, "'-' on main keyboard");
+	mlx_string_put(mlx_ptr, win_ptr, 105, 360, WHITE, "Key '-' on main keyboard");
 	mlx_string_put(mlx_ptr, win_ptr, 105, 380, WHITE, "or scroll up by mouse");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 400, RED, "RELIEF:");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 420, YELLOW, "Increase:");
-	mlx_string_put(mlx_ptr, win_ptr, 105, 420, WHITE, "'+' on num keyboard");
+	mlx_string_put(mlx_ptr, win_ptr, 105, 420, WHITE, "Key '+' on num keyboard");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 440, YELLOW, "Reduce:");
-	mlx_string_put(mlx_ptr, win_ptr, 105, 440, WHITE, "'-' on num keyboard");
+	mlx_string_put(mlx_ptr, win_ptr, 105, 440, WHITE, "Key '-' on num keyboard");
 }
 
 static void	put_view_info(void *mlx_ptr, void *win_ptr, void *img_ptr)
 {
 	mlx_string_put(mlx_ptr, win_ptr, 5, 480, RED, "VIEWS:");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 500, YELLOW, "Isometric:");
-	mlx_string_put(mlx_ptr, win_ptr, 120, 500, WHITE, "'I' or '/'");
+	mlx_string_put(mlx_ptr, win_ptr, 200, 500, WHITE, "Key 'I' or '/'");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 520, YELLOW, "In profile:");
-	mlx_string_put(mlx_ptr, win_ptr, 120, 520, WHITE, "'P' or '='");
+	mlx_string_put(mlx_ptr, win_ptr, 200, 520, WHITE, "Key 'P' or '='");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 540, YELLOW, "view from the top:");
-	mlx_string_put(mlx_ptr, win_ptr, 200, 540, WHITE, "'O' or '0'");
+	mlx_string_put(mlx_ptr, win_ptr, 200, 540, WHITE, "Key 'O' or '0'");
 }
 
 void		put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 14:22:01 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:34:55 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ int		key_hook(int key_code, void *param)
 	else if (key_code == MAIN_PAD_MINUS)
 		fdf->view->zoom /= 1.5;
 	else if (key_code == NUM_PAD_MINUS)
-		fdf->view->relief -= 0.25;
+		change_relief(fdf, -1.1);
 	else if (key_code == NUM_PAD_PLUS)
-		fdf->view->relief += 0.25;
+		change_relief(fdf, 1.1);
 	else if (key_code == MAIN_PAD_ESC)
 		exit(0);
 	view(fdf);

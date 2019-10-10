@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buttons.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 14:35:09 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:25:52 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@
 	# define MAIN_PAD_H 104
 	# define MAIN_PAD_I 105
 	# define MAIN_PAD_O 111
+	# define MAIN_PAD_P 112
 	# define ARROW_UP	65362
 	# define ARROW_DOWN	65364
 	# define ARROW_LEFT	65361
@@ -96,5 +97,14 @@
 	# define NUM_PAD_DIV 65455
 	# define NUM_PAD_PLUS 65451
 	# define NUM_PAD_MINUS 65453
+	# define NUM_PAD_EQUAL 81
+
+	# define MOUSE_LEFT_KEY		1
+	# define MOUSE_RIGHT_KEY	2
+	# define MOUSE_THIRD_KEY	3
+	# define MOUSE_SCROLL_UP	4
+	# define MOUSE_SCROLL_DOWN	5
+	# define MOUSE_SCROLL_LEFT	6
+	# define MOUSE_SCROLL_RIGHT	7
 #endif
 #endif

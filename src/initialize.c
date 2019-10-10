@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:02:41 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 16:16:56 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:15:16 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		margin(t_fdf *fdf)
 			fdf->map[i][j].y = fdf->map[i][j].y * margin_y;
 			if (fdf->map[i][j].z > 0)
 				fdf->map[i][j].z += ((margin_x + margin_y) / 2);
-			if (fdf->map[i][j].z < 0)
+			else if (fdf->map[i][j].z < 0)
 				fdf->map[i][j].z -= ((margin_x + margin_y) / 2);
 			++j;
 		}

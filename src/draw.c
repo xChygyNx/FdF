@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 20:21:58 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:23:47 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ void		view(t_fdf *fdf)
 		{
 			apply_matrix2vector(&fdf->cur_map[i][j], &fdf->map[i][j],\
 			fdf->view->matrix);
-			fdf->cur_map[i][j].z += (int)((fdf->map[i][j].z - fdf->ah) * fdf->view->relief);
 			fdf->cur_map[i][j].x *= fdf->view->zoom;
 			fdf->cur_map[i][j].y *= fdf->view->zoom;
-			fdf->cur_map[i][j].z *= fdf->view->zoom;
 			fdf->cur_map[i][j].x += fdf->view->off_x;
 			fdf->cur_map[i][j].y += fdf->view->off_y;
 			++j;

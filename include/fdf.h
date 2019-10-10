@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 17:23:22 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:05:41 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void				profile(float **matrix);
 void				apply_matrix2vector(t_vector *cur, t_vector *src,\
 					float **mtx);
 
-void				change_relief(t_fdf *fdf, int dif);
+void				change_relief(t_fdf *fdf, float dif);
 
 /*
 **  WAKE UP NEO, MATRIX HAS YOU

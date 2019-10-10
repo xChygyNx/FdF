@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/09 21:22:06 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 13:27:22 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 static int	define_area(int x, int y)
 {
-	if (x < 950 && y < 500)
+	if (x < 950 && y < 500 && y > 0)
 		return (7);
-	if (x > 949 && x < 1900 && y < 500)
+	else if (x > 949 && x < 1900 && y < 500 && y > 0)
 		return (8);
-	if (x > 1899 && y < 500)
+	else if (x > 1899 && y < 500 && y > 0)
 		return (9);
-	if (x < 950 && y > 499 && y < 1000)
+	else if (x < 950 && y > 499 && y < 1000)
 		return (4);
-	if (x > 949 && x < 1900 && y > 499 && y < 1000)
+	else if (x > 949 && x < 1900 && y > 499 && y < 1000)
 		return (5);
-	if (x > 1899 && y > 499 && y < 1000)
+	else if (x > 1899 && y > 499 && y < 1000)
 		return (6);
-	if (x < 950 && y > 999)
+	else if (x < 950 && y > 999)
 		return (1);
-	if (x > 949 && x < 1900 && y > 999)
+	else if (x > 949 && x < 1900 && y > 999)
 		return (2);
-	if (x > 1899 && y > 999)
+	else if (x > 1899 && y > 999)
 		return (3);
 	else
-		exit(ft_fprintf(2, "Click it is not clear where"));
+		return (0);
 
 }
 

@@ -6,42 +6,11 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 12:32:04 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 13:04:47 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void		put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
-{
-	mlx_string_put(mlx_ptr, win_ptr, 5, 0, RED, "ROTATE:");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 20, YELLOW, "on Y: ");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 20, WHITE, "Key '2' / '8'");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 40, WHITE, "or click by mouse on upper middle");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 60, WHITE, "or bottom middle side of screen");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 80, YELLOW, "on X: ");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 80, WHITE, "Key '4' / '6'");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 100, WHITE, "or click by mouse on left middle");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 120, WHITE, "or right middle sige of screen");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 140, YELLOW, "on Z:");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 140, WHITE, "Key '1' / '3' / '7' / '9'");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 160, WHITE, "or click by mouse on corners");
-	mlx_string_put(mlx_ptr, win_ptr, 65, 180, WHITE, "of the screen");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 500, RED, "SHIFT:");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "on X: LEFT & RIGHT \
-	arrows");
-	mlx_string_put(mlx_ptr, win_ptr, 50,500, WHITE, "on Y: UP & Down arrows");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 500, RED, "ZOOM:");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "increase: '+' on main");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "reduce: '-' on main");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 500, RED, "VIEWS:");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "isometric: 'I' or '/'");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "in profile: 'P' or '='");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "view from the top: 'O' \
-	or '0'");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 500, RED, "Exit:");
-	mlx_string_put(mlx_ptr, win_ptr, 50, 500, WHITE, "Press 'Esc'");
-}
 
 static void	draw_left_right(t_fdf *fdf, int i)
 {

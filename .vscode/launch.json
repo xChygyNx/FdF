@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/fdf",
-            "args": ["maps/Japan.L.fdf"],
+            "args": ["maps/t1.fdf"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

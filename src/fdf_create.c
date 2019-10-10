@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 12:28:16 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 14:46:27 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_view			*create_view(void)
 	if (!(view = (t_view*)malloc(sizeof(t_view))))
 		return (NULL);
 	view->zoom = 1.0;
-	view->relief = 1.0;
+	view->relief = 0.0;
 	view->off_x = IMG_WIDTH / 2;
 	view->off_y = WIN_HEIGHT / 2;
 	view->x = 0.0;

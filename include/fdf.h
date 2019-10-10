@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 12:28:16 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 17:23:22 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,12 @@ void				change_matrix(t_fdf *fdf, float alpha, char axis);
 */
 
 int					average_height(t_fdf *fdf);
+
+void				auto_color(t_fdf *fdf);
+
+int					max_height(t_fdf *fdf);
+
+int					min_height(t_fdf *fdf);
 
 /*
 **  UTILITY (delete before evaluation)

@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 13:27:22 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 14:22:01 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	define_area(int x, int y)
 
 }
 
-int		mouse_hook(int button, int x, int y, void *param)
+int		mouse_hook(int key, int x, int y, void *param)
 {
 	int		area;
 	t_fdf	*fdf;
@@ -45,16 +45,16 @@ int		mouse_hook(int button, int x, int y, void *param)
 	fdf = (t_fdf*)param;
 	ft_bzero(fdf->img_str, fdf->size_line * IMG_HEIGHT);
 	area = define_area(x, y);
-	button == MOUSE_SCROLL_UP ? fdf->view->zoom += 0.25 : 0;
-	button == MOUSE_SCROLL_DOWN ? fdf->view->zoom -= 0.25 : 0;
-	button == MOUSE_LEFT_BUTTON && area == 1 ? change_matrix(fdf, -0.1, AXIS_Z) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 2 ? change_matrix(fdf, -0.1, AXIS_X) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 3 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 4 ? change_matrix(fdf, -0.1, AXIS_Y) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 6 ? change_matrix(fdf, 0.1, AXIS_Y) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 7 ? change_matrix(fdf, -0.1, AXIS_Z) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 8 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
-	button == MOUSE_LEFT_BUTTON && area == 9 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
+	key == MOUSE_SCROLL_UP ? fdf->view->zoom /= 1.5 : 0;
+	key == MOUSE_SCROLL_DOWN ? fdf->view->zoom *= 1.5 : 0;
+	key == MOUSE_LEFT_KEY && area == 1 ? change_matrix(fdf, -0.1, AXIS_Z) : 0;
+	key == MOUSE_LEFT_KEY && area == 2 ? change_matrix(fdf, -0.1, AXIS_X) : 0;
+	key == MOUSE_LEFT_KEY && area == 3 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
+	key == MOUSE_LEFT_KEY && area == 4 ? change_matrix(fdf, -0.1, AXIS_Y) : 0;
+	key == MOUSE_LEFT_KEY && area == 6 ? change_matrix(fdf, 0.1, AXIS_Y) : 0;
+	key == MOUSE_LEFT_KEY && area == 7 ? change_matrix(fdf, -0.1, AXIS_Z) : 0;
+	key == MOUSE_LEFT_KEY && area == 8 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
+	key == MOUSE_LEFT_KEY && area == 9 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
 	view(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, INDENT, 0);
 	return (21);

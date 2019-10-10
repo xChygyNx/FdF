@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:47:35 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/08 17:10:10 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:23:01 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	null_tab(int *tab, int size)
 		tab[size] = 0;
 }
 
-static int	max_height(t_fdf *fdf)
+int			max_height(t_fdf *fdf)
 {
 	int		i;
 	int		j;
@@ -38,6 +38,28 @@ static int	max_height(t_fdf *fdf)
 		i++;
 	}
 	return (max_height);
+}
+
+int			min_height(t_fdf *fdf)
+{
+	int		i;
+	int		j;
+	int		min_height;
+
+	min_height = 2147483647;
+	i = 0;
+	while (i < fdf->height)
+	{
+		j = 0;
+		while (j < fdf->width)
+		{
+			if (fdf->map[i][j].z < min_height)
+				min_height = fdf->map[i][j].z;
+			j++;
+		}
+		i++;
+	}
+	return (min_height);
 }
 
 static int	*create_height_arr(t_fdf *fdf)
@@ -80,7 +102,6 @@ int			average_height(t_fdf *fdf)
 		}
 	}
 	free(height_arr);
-//	ft_printf("------------------------------------\n");
 	return(most_frequently_height);
 }
 

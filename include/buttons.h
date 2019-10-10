@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:04:24 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/09 16:25:06 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 14:35:09 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define BUTTONS_H
 
 #ifdef __APPLE__
-	# define MOUSE_LEFT_BUTTON	1
-	# define MOUSE_RIGHT_BUTTON	2
-	# define MOUSE_THIRD_BUTTON	3
+	# define MOUSE_LEFT_KEY		1
+	# define MOUSE_RIGHT_KEY	2
+	# define MOUSE_THIRD_KEY	3
 	# define MOUSE_SCROLL_UP	4
 	# define MOUSE_SCROLL_DOWN	5
 	# define MOUSE_SCROLL_LEFT	6

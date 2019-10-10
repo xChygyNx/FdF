@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 13:04:47 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:21:58 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		view(t_fdf *fdf)
 	int		i;
 	int		j;
 	char	mode;
+	int 	k;
 
 	i = 0;
 	while (i < fdf->height)
@@ -81,7 +82,7 @@ void		view(t_fdf *fdf)
 		{
 			apply_matrix2vector(&fdf->cur_map[i][j], &fdf->map[i][j],\
 			fdf->view->matrix);
-			fdf->cur_map[i][j].z += (fdf->map[i][j].z - fdf->ah) * fdf->view->relief;
+			fdf->cur_map[i][j].z += (int)((fdf->map[i][j].z - fdf->ah) * fdf->view->relief);
 			fdf->cur_map[i][j].x *= fdf->view->zoom;
 			fdf->cur_map[i][j].y *= fdf->view->zoom;
 			fdf->cur_map[i][j].z *= fdf->view->zoom;

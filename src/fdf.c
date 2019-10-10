@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 12:30:28 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/10 20:22:09 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		main(int argc, char **argv)
 	if (!(map = read_from_file_to_var(fd)))
 		ft_exit(NULL, MALLOC_FAILURE);
 	create_vector_map(fdf, map);
-	fdf->ah = average_height(fdf);
 	initialize(fdf);
 	put_legend(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr);
 	ft_fdf(fdf);
@@ -37,8 +36,11 @@ int		main(int argc, char **argv)
 
 void		ft_fdf(t_fdf *fdf)
 {
+	int		k;
+	int		j;
+	
+	fdf->ah = average_height(fdf);
 	view(fdf);
-	//ft_printf ("auto color = %d\n", fdf->auto_color);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr,\
 	INDENT, 0);
 	mlx_hook(fdf->win_ptr, 2, 0, &key_hook, fdf);

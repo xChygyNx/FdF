@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 09:46:54 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 20:31:31 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void			create_vector_map(t_fdf *fdf, char *char_map)
 			++j;
 		}
 		ft_free_arr(line);
-		
+
 		++i;
 	}
 	//fdf->auto_color ? auto_color(fdf) : 0;

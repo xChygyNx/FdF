@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 15:42:21 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:43:17 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int		key_hook(int key_code, void *param)
 		isometric(fdf);
 	else if (key_code == MAIN_PAD_P || key_code == NUM_PAD_EQUAL)
 		profile(fdf->view->matrix);
-	else if (key_code == MAIN_PAD_C)
-		fdf->view->change_color = 1;
+//	else if (key_code == MAIN_PAD_C)
+//		fdf->view->change_color = 1;
 	else if (key_code == MAIN_PAD_O  || key_code == NUM_PAD_0)
 		flatten(fdf);
 	else if (key_code == ARROW_LEFT)

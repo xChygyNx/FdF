@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 16:57:43 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 20:47:50 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ t_view			*create_view(void)
 	view->relief = 1.0;
 	view->off_x = IMG_WIDTH / 2;
 	view->off_y = WIN_HEIGHT / 2;
-	view->x = 0.0;
-	view->y = 0.0;
-	view->z = 0.0;
 	if (!(view->matrix = matrix_orto()))
 	{
 		free(view);

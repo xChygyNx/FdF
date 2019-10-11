@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 19:23:02 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 20:32:26 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,8 @@ typedef struct		s_view
 	float			**matrix;	//матрица поворота
 	float			zoom;		//кратность увеличения/уменьшения
 	float			relief;		//коэффициент рельефа
-	float			x;
-	float			y;
-	float			z;
+	t_vector		a;
+	t_vector		b;
 }					t_view;
 
 typedef struct		s_fdf
@@ -176,8 +175,8 @@ void				flatten(t_fdf *fdf);
 
 void				profile(float **matrix);
 
-void				apply_matrix2vector(t_vector *cur, t_vector *src,\
-					float **mtx, float relief);
+//void				apply_matrix2vector(t_vector *cur, t_vector *src,\
+//					float **mtx, float relief);
 
 void				change_relief(t_fdf *fdf, float dif);
 

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 16:35:46 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 19:13:00 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 20:52:16 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ short		**create_zbuffer(void)
 		}
 		++i;
 	}
+	drop_zbuffer(zbuffer);
 	return (zbuffer);
 }
 

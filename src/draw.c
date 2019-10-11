@@ -3,77 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 15:57:08 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:26:04 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	draw_left_right(t_fdf *fdf, int i)
-{
-	int j;
-
-	j = 0;
-	while (j < fdf->width)
-	{
-		i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;
-		j ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i][j - 1]) : 0;
-		++j;
-	}
-}
-
-static void	draw_right_left(t_fdf *fdf, int i)
-{
-	int j;
-
-	j = fdf->width - 1;
-	while (j >= 0)
-	{
-		i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;
-		j ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i][j - 1]) : 0;
-		--j;
-	}
-}
-
-static void	draw_image(t_fdf *fdf)
+static void	draw(t_fdf *fdf)
 {
 	int		i;
+	int		j;
 
-	i = (fabs(fdf->view->x) < PI) ? 0 : fdf->height - 1;
-	if (!i)
+	i = 0;
+	while (i < fdf->height)
 	{
-		while (i < fdf->height)
+		j = 0;
+		while (j < fdf->width)
 		{
-			if (fabs(fdf->view->y) < PI)
-				draw_left_right(fdf, i);
-			else
-				draw_right_left(fdf, i);
-			++i;
+			i ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i - 1][j]) : 0;
+			j ? draw_line(fdf, fdf->cur_map[i][j], fdf->cur_map[i][j - 1]) : 0;
+			++j;
 		}
+		++i;
 	}
-	else
-	{
-		while (i >= 0)
-		{
-			if (fabs(fdf->view->y) < PI)
-				draw_left_right(fdf, i);
-			else
-				draw_right_left(fdf, i);
-			--i;
-		}
-	}
+
 }
 
 void		view(t_fdf *fdf)
 {
 	int		i;
 	int		j;
-	int 	k;
 
-	//ft_printf("relief = %.2f, zoom = %.2f\n", fdf->view->relief, fdf->view->zoom);
 	fdf->view->change_color ? auto_color(fdf) : 0;
 	i = 0;
 	while (i < fdf->height)
@@ -81,7 +44,6 @@ void		view(t_fdf *fdf)
 		j = 0;
 		while (j < fdf->width)
 		{
-			//change_relief (fdf, fdf->view->relief);
 			apply_matrix2vector(&fdf->cur_map[i][j], &fdf->map[i][j],\
 			fdf->view->matrix, fdf);
 			fdf->cur_map[i][j].x *= fdf->view->zoom;
@@ -92,5 +54,6 @@ void		view(t_fdf *fdf)
 		}
 		++i;
 	}
-	draw_image(fdf);
+	drop_zbuffer(fdf->zbuffer);
+	draw(fdf);
 }

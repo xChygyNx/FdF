@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 15:57:18 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:54:14 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # ifdef __linux__
 	# define WIN_WIDTH 1200
 	# define WIN_HEIGHT 800
-	# define IMG_WIDTH 900		//WIN_WIDTH - INDENT
+	# define IMG_WIDTH 900	//WIN_WIDTH - INDENT
 	# define IMG_HEIGHT 800
 	# define MARGIN 50
 	# define INDENT 300
 # else
 	# define WIN_WIDTH 2800
 	# define WIN_HEIGHT 1500
-	# define IMG_WIDTH 2500		//WIN_WIDTH - INDENT
+	# define IMG_WIDTH 2400	//WIN_WIDTH - INDENT
 	# define IMG_HEIGHT 1500
 	# define MARGIN 100
 	# define INDENT 400
@@ -46,6 +46,9 @@
 # define AXIS_Y 8
 # define AXIS_Z 9
 # define PI 3.14159265359
+
+# define SHORT_MAX 32767
+# define SHORT_MIN -32768
 
 enum				e_bool
 {
@@ -76,8 +79,10 @@ typedef struct 		s_delta
 {
 	int				dx;
 	int				dy;
+	int				dz;
 	int				length_x;
 	int				length_y;
+	int				length_z;
 	int				length;
 }					t_delta;
 
@@ -111,6 +116,7 @@ typedef struct		s_fdf
 	struct s_vector	**map;		//исходный двумерный массив векторов
 	struct s_vector	**cur_map;	//текущая карта
 	struct s_view	*view;		//настройки текущего вид на карту
+	short			**zbuffer;	//буфер глубины
 }					t_fdf;
 
 void				ft_exit(t_fdf **fdf, int err);
@@ -226,5 +232,18 @@ unsigned char		mix_blue(int i, int j, t_fdf *fdf, char style);
 */
 
 void				print_matrix(float **matrix);
+
+void				print_z(short **zbuffer);
+
+/*
+**	Z-BUFFER
+*/
+
+void				free_zbuffer(short ***zbuffer);
+
+short				**create_zbuffer(void);
+
+void				drop_zbuffer(short **zbuffer);
+
 
 #endif

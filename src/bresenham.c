@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 20:21:05 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:50:10 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,67 +27,83 @@ static t_color	get_color(t_vector a, t_vector b, int cur, int len)
 	return (c);
 }
 
-static void		pixel_put_to_str(t_fdf *fdf, int x, int y, t_color color)
+static void		pixel_put_to_str(t_fdf *fdf, t_vector v)
 {
 	int i;
-	int k;
-	int j;
 
-	if ((x >= 0 && x < IMG_WIDTH) && (y >= 0 && y < IMG_HEIGHT))
+	if ((v.x >= 0 && v.x < IMG_WIDTH) && (v.y >= 0 && v.y < IMG_HEIGHT))
 	{
-		i = y * fdf->size_line + x * 4;
-		fdf->img_str[i] = color.t_rgb.blue;
-		fdf->img_str[++i] = color.t_rgb.green;
-		fdf->img_str[++i] = color.t_rgb.red;
+		if (fdf->zbuffer[v.y][v.x] < v.z)
+		{
+			fdf->zbuffer[v.y][v.x] = v.z;
+			i = v.y * fdf->size_line + v.x * sizeof(int);
+			fdf->img_str[i] = v.c.t_rgb.blue;
+			fdf->img_str[++i] = v.c.t_rgb.green;
+			fdf->img_str[++i] = v.c.t_rgb.red;
+		}
 	}
 }
 
 static void		draw_along_x(t_fdf *fdf, t_vector a, t_vector b, t_delta delta)
 {
 	int		d;
-	int		x;
-	int		y;
-	t_color	color;
+	t_vector v;
+	int		z;
 
-	x = a.x;
-	y = a.y;
+	v.x = a.x;
+	v.y = a.y;
+	v.z = a.z;
+	z = -delta.length_z;
 	d = -delta.length_x;
 	++delta.length;
 	while (delta.length--)
 	{
-		color = get_color(a, b, delta.length, ft_abs(a.x - b.x));
-		pixel_put_to_str(fdf, x, y, color);
-		x += delta.dx;
+		v.c = get_color(a, b, delta.length, ft_abs(a.x - b.x));
+		pixel_put_to_str(fdf, v);
+		v.x += delta.dx;
 		d += 2 * delta.length_y;
+		z += 2 * delta.length_z;
 		if (d > 0)
 		{
 			d -= 2 * delta.length_x;
-			y += delta.dy;
+			v.y += delta.dy;
+		}
+		if (z > 0)
+		{
+			z -= 2 * delta.length_z;
+			v.z += delta.dz;
 		}
 	}
 }
 
 static void		draw_along_y(t_fdf *fdf, t_vector a, t_vector b, t_delta delta)
 {
-	int		d;
-	int		x;
-	int		y;
-	t_color	color;
+	int			d;
+	t_vector	v;
+	int			z;
 
-	x = a.x;
-	y = a.y;
+	v.x = a.x;
+	v.y = a.y;
+	v.z = a.z;
 	d = -delta.length_y;
+	z = -delta.length_z;
 	++delta.length;
 	while (delta.length--)
 	{
-		color = get_color(a, b, delta.length, ft_abs(a.y - b.y));
-		pixel_put_to_str(fdf, x, y, color);
-		y += delta.dy;
+		v.c = get_color(a, b, delta.length, ft_abs(a.y - b.y));
+		pixel_put_to_str(fdf, v);
+		v.y += delta.dy;
 		d += 2 * delta.length_x;
+		z += 2 * delta.length_z;
 		if (d > 0)
 		{
 			d -= 2 * delta.length_y;
-			x += delta.dx;
+			v.x += delta.dx;
+		}
+		if (z > 0)
+		{
+			z -= 2 * delta.length_z;
+			v.z += delta.dz;
 		}
 	}
 }
@@ -95,14 +111,17 @@ static void		draw_along_y(t_fdf *fdf, t_vector a, t_vector b, t_delta delta)
 void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 {
 	t_delta delta;
+
 	delta.dx = (b.x - a.x >= 0 ? 1 : -1);
 	delta.dy = (b.y - a.y >= 0 ? 1 : -1);
+	delta.dz = (b.z - a.z >= 0 ? 1 : -1);
 	delta.length_x = abs(b.x - a.x);
 	delta.length_y = abs(b.y - a.y);
+	delta.length_z = abs(b.z - a.z);
 	delta.length = delta.length_x > delta.length_y ?\
 	delta.length_x : delta.length_y;
 	if (delta.length == 0)
-		pixel_put_to_str(fdf, a.x, a.y, a.c);
+		pixel_put_to_str(fdf, a);
 	else
 	{
 		if (delta.length_y <= delta.length_x)

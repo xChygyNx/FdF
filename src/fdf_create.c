@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 16:02:25 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 16:57:43 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_fdf			*create_fdf(void)
 	fdf->map = NULL;
 	fdf->cur_map = NULL;
 	fdf->view = NULL;
+	fdf->zbuffer = NULL;
 	fdf->width = 0;
 	fdf->height = 0;
 	fdf->auto_color = 1;
@@ -84,6 +85,7 @@ void			free_fdf(t_fdf **fdf_to_del)
 			free_vector_map(&fdf->map, fdf->height, fdf->width);
 			free_vector_map(&fdf->cur_map, fdf->height, fdf->width);
 			free_view(&fdf->view);
+			free_zbuffer(&fdf->zbuffer);
 			free(*fdf_to_del);
 		}
 		*fdf_to_del = NULL;

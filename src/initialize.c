@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:02:41 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 22:15:16 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 16:55:26 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void			initialize(t_fdf *fdf)
 	&fdf->size_line, &fdf->endian)))
 		ft_exit(&fdf, MALLOC_FAILURE);
 	if (!(fdf->view = create_view()))
+		ft_exit(&fdf, MALLOC_FAILURE);
+	if (!(fdf->zbuffer = create_zbuffer()))
 		ft_exit(&fdf, MALLOC_FAILURE);
 	margin(fdf);
 }

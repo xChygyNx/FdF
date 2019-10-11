@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 10:29:44 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 10:50:19 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		view(t_fdf *fdf)
 	int		j;
 	int 	k;
 
+	fdf->view->change_color ? auto_color(fdf) : 0;
 	i = 0;
 	while (i < fdf->height)
 	{

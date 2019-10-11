@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 22:05:41 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 12:13:55 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct		s_view
 {
 	int				off_x;		//смещение по X
 	int				off_y;		//смещение по Y
+	char			change_color; //флаг смены цвета
 	float			**matrix;	//матрица поворота
 	float			zoom;		//кратность увеличения/уменьшения
 	float			relief;		//коэффициент рельефа
@@ -207,6 +208,18 @@ void				auto_color(t_fdf *fdf);
 int					max_height(t_fdf *fdf);
 
 int					min_height(t_fdf *fdf);
+
+unsigned char		gradient_red(int min_h, int max_h, int cur_h, char style);
+
+unsigned char		gradient_green(int min_h, int max_h, int cur_h, char style);
+
+unsigned char		gradient_blue(int min_h, int max_h, int cur_h, char style);
+
+unsigned char		mix_red(int i, int j, t_fdf *fdf, char style);
+
+unsigned char		mix_green(int i, int j, t_fdf *fdf, char style);
+
+unsigned char		mix_blue(int i, int j, t_fdf *fdf, char style);
 
 /*
 **  UTILITY (delete before evaluation)

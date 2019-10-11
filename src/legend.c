@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:43:41 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 13:34:13 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 13:17:54 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static void	put_view_info(void *mlx_ptr, void *win_ptr, void *img_ptr)
 	mlx_string_put(mlx_ptr, win_ptr, 200, 520, WHITE, "Key 'P' or '='");
 	mlx_string_put(mlx_ptr, win_ptr, 5, 540, YELLOW, "view from the top:");
 	mlx_string_put(mlx_ptr, win_ptr, 200, 540, WHITE, "Key 'O' or '0'");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 580, RED, "CHANGE COLORS:");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 600, WHITE, "Press 'C'");
 }
 
 void		put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
@@ -77,7 +79,7 @@ void		put_legend(void *mlx_ptr, void *win_ptr, void *img_ptr)
 	put_shift_info(mlx_ptr, win_ptr, img_ptr);
 	put_zoom_relief_info(mlx_ptr, win_ptr, img_ptr);
 	put_view_info(mlx_ptr, win_ptr, img_ptr);
-	mlx_string_put(mlx_ptr, win_ptr, 5, 580, RED, "Exit:");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 600, WHITE, "Press 'Esc' ");
-	mlx_string_put(mlx_ptr, win_ptr, 120, 600, WHITE, "or click 'X' on window");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 640, RED, "Exit:");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 680, WHITE, "Press 'Esc' ");
+	mlx_string_put(mlx_ptr, win_ptr, 120, 680, WHITE, "or click 'X' on window");
 }

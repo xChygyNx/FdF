@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:17:21 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 14:31:44 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:33:58 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	auto_color(t_fdf *fdf)
 	//int		i;
 	//int		j;
 	//unsigned char	color_h;
-	
+
 	min_h = min_height(fdf);
 	max_h = max_height(fdf);
 	fdf->view->change_color = 0;
@@ -73,5 +73,5 @@ void	auto_color(t_fdf *fdf)
 		gradient_colors(min_h, max_h, fdf);
 	else
 		mix_colors(fdf);
-	
+
 }

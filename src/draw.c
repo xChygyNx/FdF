@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 10:50:19 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 15:57:08 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		view(t_fdf *fdf)
 	int		j;
 	int 	k;
 
+	//ft_printf("relief = %.2f, zoom = %.2f\n", fdf->view->relief, fdf->view->zoom);
 	fdf->view->change_color ? auto_color(fdf) : 0;
 	i = 0;
 	while (i < fdf->height)
@@ -80,8 +81,9 @@ void		view(t_fdf *fdf)
 		j = 0;
 		while (j < fdf->width)
 		{
+			//change_relief (fdf, fdf->view->relief);
 			apply_matrix2vector(&fdf->cur_map[i][j], &fdf->map[i][j],\
-			fdf->view->matrix);
+			fdf->view->matrix, fdf);
 			fdf->cur_map[i][j].x *= fdf->view->zoom;
 			fdf->cur_map[i][j].y *= fdf->view->zoom;
 			fdf->cur_map[i][j].x += fdf->view->off_x;

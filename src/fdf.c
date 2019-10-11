@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 10:30:09 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 14:40:32 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		ft_fdf(t_fdf *fdf)
 	int		j;
 
 	fdf->ah = average_height(fdf);
-	ft_printf("ah = %d\n", fdf->ah);
+//	ft_printf("ah = %d\n", fdf->ah);
 	fdf->auto_color ? auto_color(fdf) : 0;
 	view(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr,\

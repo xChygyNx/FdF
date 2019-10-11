@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 11:06:26 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 16:02:25 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_view			*create_view(void)
 		return (NULL);
 	view->zoom = 1.0;
 	view->change_color = 0;
-	view->relief = 0.0;
+	view->relief = 1.0;
 	view->off_x = IMG_WIDTH / 2;
 	view->off_y = WIN_HEIGHT / 2;
 	view->x = 0.0;

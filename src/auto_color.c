@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:17:21 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 12:44:14 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 14:31:44 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	mix_colors(t_fdf *fdf)
 		j = -1;
 		while (++j < fdf->width)
 		{
-			fdf->cur_map[i][j].c.t_rgb.red = mix_red(i, j, fdf, style % 6);
-			fdf->cur_map[i][j].c.t_rgb.green = mix_green(i, j, fdf, style % 6);
-			fdf->cur_map[i][j].c.t_rgb.blue = mix_blue(i, j, fdf, style % 6);
+			fdf->cur_map[i][j].c.t_rgb.red = mix_red(i, j, fdf, style % 7);
+			fdf->cur_map[i][j].c.t_rgb.green = mix_green(i, j, fdf, style % 7);
+			fdf->cur_map[i][j].c.t_rgb.blue = mix_blue(i, j, fdf, style % 7);
 		}
 	}
 }

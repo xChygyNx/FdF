@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 11:06:09 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 15:42:21 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,11 @@ int		key_hook(int key_code, void *param)
 	else if (key_code == MAIN_PAD_MINUS)
 		fdf->view->zoom /= 1.5;
 	else if (key_code == NUM_PAD_MINUS)
-		change_relief(fdf, -1.1);
+		//change_relief(fdf, -1.1);
+		fdf->view->relief -= 0.25;
 	else if (key_code == NUM_PAD_PLUS)
-		change_relief(fdf, 1.1);
+		//change_relief(fdf, 1.1);
+		fdf->view->relief += 0.25;
 	else if (key_code == MAIN_PAD_ESC)
 		exit(0);
 	view(fdf);

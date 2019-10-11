@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 12:13:55 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 15:57:18 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void				flatten(t_fdf *fdf);
 void				profile(float **matrix);
 
 void				apply_matrix2vector(t_vector *cur, t_vector *src,\
-					float **mtx);
+					float **mtx, t_fdf *fdf);
 
 void				change_relief(t_fdf *fdf, float dif);
 

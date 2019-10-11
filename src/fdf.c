@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 22:49:01 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 10:30:09 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		ft_fdf(t_fdf *fdf)
 
 	fdf->ah = average_height(fdf);
 	ft_printf("ah = %d\n", fdf->ah);
+	fdf->auto_color ? auto_color(fdf) : 0;
 	view(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr,\
 	INDENT, 0);

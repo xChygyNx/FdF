@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/10 20:22:33 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 09:46:54 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			create_vector_map(t_fdf *fdf, char *char_map)
 		
 		++i;
 	}
-	fdf->auto_color ? auto_color(fdf) : 0;
+	//fdf->auto_color ? auto_color(fdf) : 0;
 	duplicate_vector(fdf);
 }
 

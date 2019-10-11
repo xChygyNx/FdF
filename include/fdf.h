@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 18:54:14 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:23:02 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@
 # define AXIS_X 7
 # define AXIS_Y 8
 # define AXIS_Z 9
-# define PI 3.14159265359
 
-# define SHORT_MAX 32767
 # define SHORT_MIN -32768
 
 enum				e_bool
@@ -179,7 +177,7 @@ void				flatten(t_fdf *fdf);
 void				profile(float **matrix);
 
 void				apply_matrix2vector(t_vector *cur, t_vector *src,\
-					float **mtx, t_fdf *fdf);
+					float **mtx, float relief);
 
 void				change_relief(t_fdf *fdf, float dif);
 

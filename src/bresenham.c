@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 20:41:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 18:50:10 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:10:27 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,13 @@ static void		pixel_put_to_str(t_fdf *fdf, t_vector v)
 
 static void		draw_along_x(t_fdf *fdf, t_vector a, t_vector b, t_delta delta)
 {
-	int		d;
-	t_vector v;
-	int		z;
+	t_vector	v;
+	int			d;
+	int			z;
 
-	v.x = a.x;
-	v.y = a.y;
-	v.z = a.z;
+	v = a;
 	z = -delta.length_z;
 	d = -delta.length_x;
-	++delta.length;
 	while (delta.length--)
 	{
 		v.c = get_color(a, b, delta.length, ft_abs(a.x - b.x));
@@ -78,16 +75,13 @@ static void		draw_along_x(t_fdf *fdf, t_vector a, t_vector b, t_delta delta)
 
 static void		draw_along_y(t_fdf *fdf, t_vector a, t_vector b, t_delta delta)
 {
-	int			d;
 	t_vector	v;
+	int			d;
 	int			z;
 
-	v.x = a.x;
-	v.y = a.y;
-	v.z = a.z;
+	v = a;
 	d = -delta.length_y;
 	z = -delta.length_z;
-	++delta.length;
 	while (delta.length--)
 	{
 		v.c = get_color(a, b, delta.length, ft_abs(a.y - b.y));
@@ -119,7 +113,7 @@ void			draw_line(t_fdf *fdf, t_vector a, t_vector b)
 	delta.length_y = abs(b.y - a.y);
 	delta.length_z = abs(b.z - a.z);
 	delta.length = delta.length_x > delta.length_y ?\
-	delta.length_x : delta.length_y;
+	delta.length_x + 1 : delta.length_y + 1;
 	if (delta.length == 0)
 		pixel_put_to_str(fdf, a);
 	else

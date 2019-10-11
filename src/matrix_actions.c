@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 13:14:48 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 16:51:57 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:04:23 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,32 +64,18 @@ void			print_matrix(float **matrix)
 	ft_printf("\n");
 }
 
-static float	round_pi(float alpha)
-{
-	if (fabs(alpha) > 6.26)
-		alpha += alpha > 0.0 ? -6.28 : 6.28;
-	return (alpha);
-}
-
 void			change_matrix(t_fdf *fdf, float alpha, char axis)
 {
 	float	**temp;
 
 	if (axis == AXIS_X)
-	{
 		temp = matrix_x(alpha);
-//		fdf->view->x = round_pi(fdf->view->x + alpha);
-	}
 	else if (axis == AXIS_Y)
-	{
 		temp = matrix_y(alpha);
-//		fdf->view->y = round_pi(fdf->view->y + alpha);
-	}
 	else if (axis == AXIS_Z)
-	{
 		temp = matrix_z(alpha);
-//		fdf->view->z = round_pi(fdf->view->z + alpha);
-	}
+	if (!temp)
+		ft_exit(&fdf, MALLOC_FAILURE);
 	if (!(fdf->view->matrix = multiplication(fdf->view->matrix, temp)))
 	{
 		free_matrix(&temp);

@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 16:35:46 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 18:29:27 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:13:00 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		drop_zbuffer(short **zbuffer)
 	}
 }
 
-void			print_z(short **zbuffer)
+void		print_z(short **zbuffer)
 {
 	int i;
 	int j;
@@ -96,4 +96,3 @@ void			print_z(short **zbuffer)
 		++i;
 	}
 }
-

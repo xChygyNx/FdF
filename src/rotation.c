@@ -3,20 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 18:13:56 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 15:55:51 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:22:23 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		apply_matrix2vector(t_vector *cur, t_vector *src, float **mtx, t_fdf *fdf)
+void		apply_matrix2vector(t_vector *cur, t_vector *src,\
+			float **mtx, float relief)
 {
-	cur->x = src->x * mtx[0][0] + src->y * mtx[0][1] + src->z * mtx[0][2] * fdf->view->relief;
-	cur->y = src->x * mtx[1][0] + src->y * mtx[1][1] + src->z * mtx[1][2] * fdf->view->relief;
-	cur->z = src->x * mtx[2][0] + src->y * mtx[2][1] + src->z * mtx[2][2] * fdf->view->relief;
+	cur->x = src->x * mtx[0][0] + src->y * mtx[0][1]\
+	+ src->z * mtx[0][2] * relief;
+	cur->y = src->x * mtx[1][0] + src->y * mtx[1][1]\
+	+ src->z * mtx[1][2] * relief;
+	cur->z = src->x * mtx[2][0] + src->y * mtx[2][1]\
+	+ src->z * mtx[2][2] * relief;
 }
 
 void		isometric(t_fdf *fdf)

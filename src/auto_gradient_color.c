@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 11:27:41 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 13:18:23 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 19:38:36 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ unsigned char	gradient_red(int min_h, int max_h, int cur_h, char style)
 		red = 0xFF;
 	else if (style == 2 || style == 3 || style == 6)
 		red = (int) 255 * coef;
-	else if (style == 7)
-		red = (int) 255 * coef;
+	else if (style == 0)
+		red = 0xFF;
 	//ft_printf (" = %d, 255 * coef = %.0f, coef = %.0f\n", red, 255 * coef, coef);
 	//ft_printf ("red = %d ", red);
 	return (red);
@@ -39,8 +39,8 @@ unsigned char	gradient_green(int min_h, int max_h, int cur_h, char style)
 		green = 0xFF;
 	else if (style == 1 || style == 3 || style == 4)
 		green = (int) 255 * coef;
-	else if (style == 7)
-		green = (int) 255 * coef;
+	else if (style == 0)
+		green = 0xFF;
 	//ft_printf ("green = %d ", green);
 	return (green);
 }
@@ -55,8 +55,8 @@ unsigned char	gradient_blue(int min_h, int max_h, int cur_h, char style)
 		blue = 0xFF;
 	else if (style == 1 || style == 2 || style == 5)
 		blue = (int) 255 * coef;
-	else if (style == 7)
-		blue = (int) 255 * coef;
+	else if (style == 0)
+		blue = 0xFF;
 	//ft_printf ("blue = %d, 255 * coef = %d, coef = %f\n", blue, 255 * coef, coef);
 	return (blue);
 }

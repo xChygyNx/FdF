@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:17:21 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 19:43:03 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/11 21:45:21 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	mix_colors(t_fdf *fdf)
 		j = -1;
 		while (++j < fdf->width)
 		{
-			fdf->cur_map[i][j].c.t_rgb.red = mix_red(i, j, fdf, style % 7);
-			fdf->cur_map[i][j].c.t_rgb.green = mix_green(i, j, fdf, style % 7);
-			fdf->cur_map[i][j].c.t_rgb.blue = mix_blue(i, j, fdf, style % 7);
+			fdf->map[i][j].c.t_rgb.red = mix_red(i, j, fdf, style % 7);
+			fdf->map[i][j].c.t_rgb.green = mix_green(i, j, fdf, style % 7);
+			fdf->map[i][j].c.t_rgb.blue = mix_blue(i, j, fdf, style % 7);
 		}
 	}
 }
@@ -45,27 +45,26 @@ static void	gradient_colors(int min_h, int max_h, t_fdf *fdf)
 		j = -1;
 		while (++j < fdf->width)
 		{
-			fdf->cur_map[i][j].c.t_rgb.red = gradient_red(min_h, max_h,\
+			fdf->map[i][j].c.t_rgb.red = gradient_red(min_h, max_h,\
 			fdf->map[i][j].z, style % 7);
-			fdf->cur_map[i][j].c.t_rgb.green = gradient_green(min_h, max_h,\
+			fdf->map[i][j].c.t_rgb.green = gradient_green(min_h, max_h,\
 			fdf->map[i][j].z, style % 7);
-			fdf->cur_map[i][j].c.t_rgb.blue = gradient_blue(min_h, max_h,\
+			fdf->map[i][j].c.t_rgb.blue = gradient_blue(min_h, max_h,\
 			fdf->map[i][j].z, style % 7);
 		}
 	}
 }
 
-void	auto_color(t_fdf *fdf)
+t_color		auto_color(t_fdf *fdf, t_vector src)
 {
-	int		min_h;
-	int		max_h;
-	//int		dif_h;
-	//int		i;
-	//int		j;
-	//unsigned char	color_h;
-
-	min_h = min_height(fdf);
-	max_h = max_height(fdf);
+	fdf->auto_color = (fdf->auto_color + 1) % 7;
+	if (fdf->view->change_color)
+		return (src.c);
+	else
+	{
+			
+	}
+	
 	fdf->view->change_color = 0;
 	//ft_printf("In auto color\n");
 	//dif_h = max_height(fdf) - min_height(fdf);

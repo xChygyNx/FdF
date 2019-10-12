@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/12 12:02:26 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:30:57 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@
 # include "buttons.h"
 
 # ifdef __linux__
-	# define WIN_WIDTH 1200
-	# define WIN_HEIGHT 800
-	# define IMG_WIDTH 900
-	# define IMG_HEIGHT 800
-	# define MARGIN 50
-	# define INDENT 300
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
+# define IMG_WIDTH 900
+# define IMG_HEIGHT 800
+# define MARGIN 50
+# define INDENT 300
 # else
-	# define WIN_WIDTH 2800
-	# define WIN_HEIGHT 1500
-	# define IMG_WIDTH 2400
-	# define IMG_HEIGHT 1500
-	# define MARGIN 100
-	# define INDENT 400
-#endif
+# define WIN_WIDTH 2800
+# define WIN_HEIGHT 1500
+# define IMG_WIDTH 2400
+# define IMG_HEIGHT 1500
+# define MARGIN 100
+# define INDENT 400
+# endif
 
 # define USAGE  100
 # define LINE_LENGTHS 101
@@ -67,7 +67,7 @@ typedef struct		s_vector
 	union u_color	c;
 }					t_vector;
 
-typedef struct 		s_delta
+typedef struct		s_delta
 {
 	int				dx;
 	int				dy;
@@ -80,12 +80,12 @@ typedef struct 		s_delta
 
 typedef struct		s_view
 {
-	int				off_x;			//смещение по X
-	int				off_y;			//смещение по Y
-	char			style;			//флаг смены цвета
-	float			**matrix;		//матрица поворота
-	float			zoom;			//кратность увеличения/уменьшения
-	float			relief;			//коэффициент рельефа
+	int				off_x;
+	int				off_y;
+	char			style;
+	float			**matrix;
+	float			zoom;
+	float			relief;
 	t_vector		a;
 	t_vector		b;
 }					t_view;
@@ -93,22 +93,22 @@ typedef struct		s_view
 typedef struct		s_fdf
 {
 	char			**char_map;
-	void			*mlx_ptr;	//идентификатор соединения с X-server
-	void			*win_ptr;	//узакатель на окно
-	void			*img_ptr;	//указатель на изображение
-	char			*img_str;	//строка-изображение len(size_line * height)
-	int				size_line;	//длина строки строки (WIN_WIDTH * bit_per_pixel / 8)
-	int				width;		//ширина карты (нужна для итерации)
-	int				height;		//высота карты (нужна для итерации)
-	int				colorful;	//флаг, сигнализирует о том имеются ли на карте цвета
-	int				min_h;		//наименьшая высота карты
-	int				max_h;		//наибольшая высота карты
-	int				bpp;		//бит на пиксель
-	int				endian;		//порядок битов
-	struct s_vector	**map;		//исходный двумерный массив векторов
-	struct s_view	*view;		//настройки текущего вид на карту
-	int				auto_color;	//флаг, для включение авто-закрашивания в зависимости от высоты точки (только если в карте нет цветов точек)
-	int				**zbuffer;	//буфер глубины
+	void			*mlx_ptr;
+	void			*win_ptr;
+	void			*img_ptr;
+	char			*img_str;
+	int				size_line;
+	int				width;
+	int				height;
+	int				colorful;
+	int				min_h;
+	int				max_h;
+	int				bpp;
+	int				endian;
+	struct s_vector	**map;
+	struct s_view	*view;
+	int				auto_color;
+	int				**zbuffer;
 }					t_fdf;
 
 void				ft_exit(t_fdf **fdf, int err);

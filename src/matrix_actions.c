@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 13:14:48 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 19:04:23 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:23:32 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,6 @@ float			**multiplication(float **cur, float **matrix)
 	}
 	free_matrix(&cur);
 	return (new_matrix);
-}
-
-void			print_matrix(float **matrix)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < 3)
-	{
-		ft_printf("[ ");
-		j = 0;
-		while (j < 3)
-		{
-			ft_printf("%.3f", matrix[i][j]);
-			++j;
-			if (j != 3)
-				ft_printf(", ");
-		}
-		ft_printf(" ]\n");
-		++i;
-	}
-	ft_printf("\n");
 }
 
 void			change_matrix(t_fdf *fdf, float alpha, char axis)

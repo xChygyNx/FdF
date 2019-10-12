@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/12 11:59:32 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:31:31 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ static int	define_area(int x, int y)
 		return (3);
 	else
 		return (0);
-
 }
 
-int		mouse_hook(int key, int x, int y, void *param)
+int			mouse_hook(int key, int x, int y, void *param)
 {
 	int		area;
 	t_fdf	*fdf;
@@ -56,33 +55,16 @@ int		mouse_hook(int key, int x, int y, void *param)
 	key == MOUSE_LEFT_KEY && area == 8 ? change_matrix(fdf, 0.1, AXIS_X) : 0;
 	key == MOUSE_LEFT_KEY && area == 9 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
 	view(fdf);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, INDENT, 0);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr,\
+		fdf->img_ptr, INDENT, 0);
 	return (21);
 }
 
-int		key_hook(int key_code, void *param)
+static void	key_hook2(int key_code, t_fdf *fdf)
 {
-	t_fdf *fdf;
-
-	fdf = (t_fdf*)param;
-	ft_bzero(fdf->img_str, fdf->size_line * IMG_HEIGHT);
-	if (key_code == NUM_PAD_2)
-		change_matrix(fdf, -0.1, AXIS_X);
-	else if (key_code == NUM_PAD_8)
-		change_matrix(fdf, 0.1, AXIS_X);
-	else if (key_code == NUM_PAD_4)
-		change_matrix(fdf, -0.1, AXIS_Y);
-	else if (key_code == NUM_PAD_6)
-		change_matrix(fdf, 0.1, AXIS_Y);
-	else if (key_code == NUM_PAD_1 || key_code == NUM_PAD_7)
-		change_matrix(fdf, -0.1, AXIS_Z);
-	else if (key_code == NUM_PAD_3 || key_code == NUM_PAD_9)
-		change_matrix(fdf, 0.1, AXIS_Z);
-	else if (key_code == MAIN_PAD_I || key_code == NUM_PAD_DIV)
-		isometric(fdf);
-	else if (key_code == MAIN_PAD_P || key_code == NUM_PAD_EQUAL)
+	if (key_code == MAIN_PAD_P || key_code == NUM_PAD_EQUAL)
 		profile(fdf->view->matrix);
-	else if (key_code == MAIN_PAD_O  || key_code == NUM_PAD_0)
+	else if (key_code == MAIN_PAD_O || key_code == NUM_PAD_0)
 		flatten(fdf);
 	else if (key_code == MAIN_PAD_C)
 		fdf->view->style = (fdf->view->style + 1) % 7;
@@ -104,8 +86,31 @@ int		key_hook(int key_code, void *param)
 		fdf->view->relief += 0.25;
 	else if (key_code == MAIN_PAD_ESC)
 		exit(0);
+}
+
+int			key_hook(int key_code, void *param)
+{
+	t_fdf	*fdf;
+
+	fdf = (t_fdf*)param;
+	ft_bzero(fdf->img_str, fdf->size_line * IMG_HEIGHT);
+	if (key_code == NUM_PAD_2)
+		change_matrix(fdf, -0.1, AXIS_X);
+	else if (key_code == NUM_PAD_8)
+		change_matrix(fdf, 0.1, AXIS_X);
+	else if (key_code == NUM_PAD_4)
+		change_matrix(fdf, -0.1, AXIS_Y);
+	else if (key_code == NUM_PAD_6)
+		change_matrix(fdf, 0.1, AXIS_Y);
+	else if (key_code == NUM_PAD_1 || key_code == NUM_PAD_7)
+		change_matrix(fdf, -0.1, AXIS_Z);
+	else if (key_code == NUM_PAD_3 || key_code == NUM_PAD_9)
+		change_matrix(fdf, 0.1, AXIS_Z);
+	else if (key_code == MAIN_PAD_I || key_code == NUM_PAD_DIV)
+		isometric(fdf);
+	key_hook2(key_code, fdf);
 	view(fdf);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, INDENT, 0);
-	ft_printf("key %d\n", key_code);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr,\
+		fdf->img_ptr, INDENT, 0);
 	return (42);
 }

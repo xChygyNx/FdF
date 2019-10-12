@@ -6,11 +6,58 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/12 11:50:24 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:02:05 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+
+static int		max_height(t_fdf *fdf)
+{
+	int		i;
+	int		j;
+	int		max_height;
+
+	max_height = -2147483648;
+	i = 0;
+	while (i < fdf->height)
+	{
+		j = 0;
+		while (j < fdf->width)
+		{
+			if (fdf->map[i][j].z > max_height)
+				max_height = fdf->map[i][j].z;
+			j++;
+		}
+		i++;
+	}
+	return (max_height);
+}
+
+static int		min_height(t_fdf *fdf)
+{
+	int		i;
+	int		j;
+	int		min_height;
+
+	min_height = 2147483647;
+	i = 0;
+	while (i < fdf->height)
+	{
+		j = 0;
+		while (j < fdf->width)
+		{
+			if (fdf->map[i][j].z < min_height)
+				min_height = fdf->map[i][j].z;
+			j++;
+		}
+		i++;
+	}
+	return (min_height);
+}
+
+
 
 static void		add_height_and_width(t_fdf *fdf, char *map)
 {
@@ -68,7 +115,8 @@ void			create_vector_map(t_fdf *fdf, char *char_map)
 			++j;
 		}
 		ft_free_arr(line);
-
 		++i;
 	}
+	fdf->max_h = max_height(fdf);
+	fdf->min_h = min_height(fdf);
 }

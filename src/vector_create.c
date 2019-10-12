@@ -6,12 +6,11 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 21:49:47 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/12 12:02:05 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:25:26 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 static int		max_height(t_fdf *fdf)
 {
@@ -56,8 +55,6 @@ static int		min_height(t_fdf *fdf)
 	}
 	return (min_height);
 }
-
-
 
 static void		add_height_and_width(t_fdf *fdf, char *map)
 {

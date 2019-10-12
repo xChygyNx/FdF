@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:50:53 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/12 12:18:04 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:36:35 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,11 @@ int		main(int argc, char **argv)
 
 void	ft_fdf(t_fdf *fdf)
 {
-	int		k;
-	int		j;
-
 	view(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr,\
 	INDENT, 0);
 	mlx_hook(fdf->win_ptr, 2, 0, &key_hook, fdf);
-	mlx_mouse_hook(fdf->win_ptr, &mouse_hook, (void*) fdf);
-	mlx_hook(fdf->win_ptr, 17, 0, (int (*)())exit, (void*) fdf);
+	mlx_mouse_hook(fdf->win_ptr, &mouse_hook, (void*)fdf);
+	mlx_hook(fdf->win_ptr, 17, 0, (int(*)())exit, (void*)fdf);
 	mlx_loop(fdf->mlx_ptr);
 }

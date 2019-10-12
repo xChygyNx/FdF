@@ -6,15 +6,15 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/12 12:11:47 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:17:15 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	point_color(t_fdf *fdf, char *color16)
+static int		point_color(t_fdf *fdf, char *color16)
 {
-	int		color;
+	int			color;
 
 	if (!ft_strncmp(color16, "0x", 2) || !ft_strncmp(color16, "0X", 2))
 	{
@@ -27,10 +27,10 @@ static int	point_color(t_fdf *fdf, char *color16)
 	return (color);
 }
 
-static int	ft_atoi_fdf(t_fdf *fdf, char *str)
+static int		ft_atoi_fdf(t_fdf *fdf, char *str)
 {
-	int		nbr;
-	char	*nbr_s;
+	int			nbr;
+	char		*nbr_s;
 
 	nbr = ft_atoi(str);
 	if (!(nbr_s = ft_itoa(nbr)))
@@ -41,9 +41,9 @@ static int	ft_atoi_fdf(t_fdf *fdf, char *str)
 	return (nbr);
 }
 
-unsigned int		change_color(t_fdf *fdf, t_vector *src)
+unsigned int	change_color(t_fdf *fdf, t_vector *src)
 {
-	t_color	color;
+	t_color		color;
 
 	if (fdf->colorful)
 	{
@@ -60,9 +60,9 @@ unsigned int		change_color(t_fdf *fdf, t_vector *src)
 	return (color.color);
 }
 
-void		point_height_color(t_fdf *fdf, int i, int j, char *point)
+void			point_height_color(t_fdf *fdf, int i, int j, char *point)
 {
-	char	**hex_color;
+	char		**hex_color;
 
 	if (ft_strchr(point, ','))
 	{

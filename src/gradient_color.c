@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 11:27:41 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/12 12:08:17 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:19:57 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned char	gradient_red(t_fdf *fdf, t_vector *cur)
 	float			coef;
 
 	style = fdf->view->style;
-	coef = (float)(cur->z - fdf->min_h) / (fdf->max_h - fdf->min_h);
+	coef = (float) (cur->z - fdf->min_h) / (fdf->max_h - fdf->min_h);
 	if (style == 1 || style == 4 || style == 5)
 		red = 0xFF;
 	else if (style == 2 || style == 3 || style == 6)
@@ -34,7 +34,7 @@ unsigned char	gradient_green(t_fdf *fdf, t_vector *cur)
 	float			coef;
 
 	style = fdf->view->style;
-	coef = (float)(cur->z - fdf->min_h) / (fdf->max_h - fdf->min_h);
+	coef = (float) (cur->z - fdf->min_h) / (fdf->max_h - fdf->min_h);
 	if (style == 2 || style == 5 || style == 6)
 		green = 0xFF;
 	else if (style == 1 || style == 3 || style == 4)
@@ -49,7 +49,7 @@ unsigned char	gradient_blue(t_fdf *fdf, t_vector *cur)
 	float			coef;
 
 	style = fdf->view->style;
-	coef = (float)(cur->z - fdf->min_h) / (fdf->max_h - fdf->min_h);
+	coef = (float) (cur->z - fdf->min_h) / (fdf->max_h - fdf->min_h);
 	if (style == 3 || style == 4 || style == 6)
 		blue = 0xFF;
 	else if (style == 1 || style == 2 || style == 5)

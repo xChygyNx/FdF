@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 12:28:07 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 10:35:17 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		point_height_color(t_fdf *fdf, int i, int j, char *point)
 			ft_exit(&fdf, MALLOC_FAILURE);
 		fdf->map[i][j].z = ft_atoi_fdf(fdf, hex_color[0]);
 		fdf->map[i][j].c.color = point_color(fdf, hex_color[1]);
-		fdf->auto_color = 0;
+		fdf->colorful = 1;
 		ft_free_arr(hex_color);
 	}
 	else

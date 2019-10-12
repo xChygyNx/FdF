@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 21:31:40 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:30:40 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct		s_view
 {
 	int				off_x;		//смещение по X
 	int				off_y;		//смещение по Y
-	char			change_color; //флаг смены цвета
+	char			style; 		//номер варианта расцветки
 	float			**matrix;	//матрица поворота
 	float			zoom;		//кратность увеличения/уменьшения
 	float			relief;		//коэффициент рельефа
@@ -106,7 +106,7 @@ typedef struct		s_fdf
 	int				size_line;	//длина строки строки (WIN_WIDTH * bit_per_pixel / 8)
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
-	int				auto_color;	//флаг, для включение авто-закрашивания в зависимости от высоты точки (только если в карте нет цветов точек)
+	int				colorful;	//флаг, сигнализирует о том имеются ли на карте цвета
 	int				min_h;		//наименьшая высота карты
 	int				max_h;		//наибольшая высота карты
 	int				bpp;		//бит на пиксель
@@ -207,23 +207,23 @@ void				change_matrix(t_fdf *fdf, float alpha, char axis);
 
 int					average_height(t_fdf *fdf);
 
-void				auto_color(t_fdf *fdf);
+unsigned int		change_color(t_fdf *fdf, t_vector *src);
 
 int					max_height(t_fdf *fdf);
 
 int					min_height(t_fdf *fdf);
 
-unsigned char		gradient_red(int min_h, int max_h, int cur_h, char style);
+unsigned char		gradient_red(t_fdf *fdf, t_vector *cur);
 
-unsigned char		gradient_green(int min_h, int max_h, int cur_h, char style);
+unsigned char		gradient_green(t_fdf *fdf, t_vector *cur);
 
-unsigned char		gradient_blue(int min_h, int max_h, int cur_h, char style);
+unsigned char		gradient_blue(t_fdf *fdf, t_vector *cur);
 
-unsigned char		mix_red(int i, int j, t_fdf *fdf, char style);
+unsigned char		mix_red(t_fdf *fdf, t_vector *cur);
 
-unsigned char		mix_green(int i, int j, t_fdf *fdf, char style);
+unsigned char		mix_green(t_fdf *fdf, t_vector *cur);
 
-unsigned char		mix_blue(int i, int j, t_fdf *fdf, char style);
+unsigned char		mix_blue(t_fdf *fdf, t_vector *cur);
 
 /*
 **  UTILITY (delete before evaluation)

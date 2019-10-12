@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 12:43:41 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 13:17:54 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:47:42 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	put_rotate_info(void *mlx_ptr, void *win_ptr, void *img_ptr)
 {
 	mlx_string_put(mlx_ptr, win_ptr, 5, 0, RED, "ROTATE:");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 20, YELLOW, "on Y: ");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 20, YELLOW, "on X: ");
 	mlx_string_put(mlx_ptr, win_ptr, 65, 20, WHITE, "Key '2' / '8'");
 	mlx_string_put(mlx_ptr, win_ptr, 65, 40, WHITE, "or click by mouse on\
 	 upper middle");
 	mlx_string_put(mlx_ptr, win_ptr, 65, 60, WHITE, "or bottom middle side of\
 	 screen");
-	mlx_string_put(mlx_ptr, win_ptr, 5, 80, YELLOW, "on X: ");
+	mlx_string_put(mlx_ptr, win_ptr, 5, 80, YELLOW, "on Y: ");
 	mlx_string_put(mlx_ptr, win_ptr, 65, 80, WHITE, "Key '4' / '6'");
 	mlx_string_put(mlx_ptr, win_ptr, 65, 100, WHITE, "or click by mouse on\
 	 left middle");

@@ -6,7 +6,7 @@
 /*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 16:59:40 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 21:10:56 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:49:47 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		mouse_hook(int key, int x, int y, void *param)
 	key == MOUSE_LEFT_KEY && area == 4 ? change_matrix(fdf, -0.1, AXIS_Y) : 0;
 	key == MOUSE_LEFT_KEY && area == 6 ? change_matrix(fdf, 0.1, AXIS_Y) : 0;
 	key == MOUSE_LEFT_KEY && area == 7 ? change_matrix(fdf, -0.1, AXIS_Z) : 0;
-	key == MOUSE_LEFT_KEY && area == 8 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
+	key == MOUSE_LEFT_KEY && area == 8 ? change_matrix(fdf, 0.1, AXIS_X) : 0;
 	key == MOUSE_LEFT_KEY && area == 9 ? change_matrix(fdf, 0.1, AXIS_Z) : 0;
 	view(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, INDENT, 0);
@@ -83,7 +83,7 @@ int		key_hook(int key_code, void *param)
 	else if (key_code == MAIN_PAD_P || key_code == NUM_PAD_EQUAL)
 		profile(fdf->view->matrix);
 	else if (key_code == MAIN_PAD_C)
-		auto_color(fdf);
+		fdf->view->style = (fdf->view->style + 1) % 7;
 	else if (key_code == MAIN_PAD_O  || key_code == NUM_PAD_0)
 		flatten(fdf);
 	else if (key_code == ARROW_LEFT)
@@ -99,10 +99,8 @@ int		key_hook(int key_code, void *param)
 	else if (key_code == MAIN_PAD_MINUS)
 		fdf->view->zoom /= 1.5;
 	else if (key_code == NUM_PAD_MINUS)
-		//change_relief(fdf, -1.1);
 		fdf->view->relief -= 0.25;
 	else if (key_code == NUM_PAD_PLUS)
-		//change_relief(fdf, 1.1);
 		fdf->view->relief += 0.25;
 	else if (key_code == MAIN_PAD_ESC)
 		exit(0);

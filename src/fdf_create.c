@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:10:22 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 20:47:50 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 10:35:17 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_fdf			*create_fdf(void)
 	fdf->zbuffer = NULL;
 	fdf->width = 0;
 	fdf->height = 0;
-	fdf->auto_color = 1;
+	fdf->colorful = 0;
 	fdf->bpp = 0;
 	fdf->endian = 0;
 	return (fdf);
@@ -42,7 +42,7 @@ t_view			*create_view(void)
 	if (!(view = (t_view*)malloc(sizeof(t_view))))
 		return (NULL);
 	view->zoom = 1.0;
-	view->change_color = 0;
+	view->style = 0;
 	view->relief = 1.0;
 	view->off_x = IMG_WIDTH / 2;
 	view->off_y = WIN_HEIGHT / 2;

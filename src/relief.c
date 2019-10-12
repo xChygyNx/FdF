@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   relief.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:47:35 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 15:55:30 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/11 21:28:18 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,22 +103,4 @@ int			average_height(t_fdf *fdf)
 	}
 	free(height_arr);
 	return(most_frequently_height);
-}
-
-void		change_relief(t_fdf *fdf, float dif)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < fdf->height)
-	{
-		j = 0;
-		while (j < fdf->width)
-		{
-			fdf->cur_map[i][j].z += (fdf->map[i][j].z - fdf->ah) * dif;
-			++j;
-		}
-		++i;
-	}
 }

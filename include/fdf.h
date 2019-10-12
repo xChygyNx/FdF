@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 18:51:07 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 20:32:26 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:10:42 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # ifdef __linux__
 	# define WIN_WIDTH 1200
 	# define WIN_HEIGHT 800
-	# define IMG_WIDTH 900	//WIN_WIDTH - INDENT
+	# define IMG_WIDTH 900
 	# define IMG_HEIGHT 800
 	# define MARGIN 50
 	# define INDENT 300
 # else
 	# define WIN_WIDTH 2800
 	# define WIN_HEIGHT 1500
-	# define IMG_WIDTH 2400	//WIN_WIDTH - INDENT
+	# define IMG_WIDTH 2400
 	# define IMG_HEIGHT 1500
 	# define MARGIN 100
 	# define INDENT 400
@@ -47,12 +47,6 @@
 # define AXIS_Z 9
 
 # define SHORT_MIN -32768
-
-enum				e_bool
-{
-	FALSE,
-	TRUE
-};
 
 typedef union		u_color
 {
@@ -86,12 +80,12 @@ typedef struct 		s_delta
 
 typedef struct		s_view
 {
-	int				off_x;		//смещение по X
-	int				off_y;		//смещение по Y
-	char			change_color; //флаг смены цвета
-	float			**matrix;	//матрица поворота
-	float			zoom;		//кратность увеличения/уменьшения
-	float			relief;		//коэффициент рельефа
+	int				off_x;			//смещение по X
+	int				off_y;			//смещение по Y
+	char			change_color;	//флаг смены цвета
+	float			**matrix;		//матрица поворота
+	float			zoom;			//кратность увеличения/уменьшения
+	float			relief;			//коэффициент рельефа
 	t_vector		a;
 	t_vector		b;
 }					t_view;
@@ -106,14 +100,12 @@ typedef struct		s_fdf
 	int				size_line;	//длина строки строки (WIN_WIDTH * bit_per_pixel / 8)
 	int				width;		//ширина карты (нужна для итерации)
 	int				height;		//высота карты (нужна для итерации)
-	int				auto_color;	//флаг, для включение авто-закрашивания в зависимости от высоты точки (только если в карте нет цветов точек)
-	int				ah;			//наиболее часто встречаемая высота (нужна для корректного изменения рельефа)
 	int				bpp;		//бит на пиксель
 	int				endian;		//порядок битов
 	struct s_vector	**map;		//исходный двумерный массив векторов
-	struct s_vector	**cur_map;	//текущая карта
 	struct s_view	*view;		//настройки текущего вид на карту
-	short			**zbuffer;	//буфер глубины
+	int				auto_color;	//флаг, для включение авто-закрашивания в зависимости от высоты точки (только если в карте нет цветов точек)
+	int				**zbuffer;	//буфер глубины
 }					t_fdf;
 
 void				ft_exit(t_fdf **fdf, int err);
@@ -161,24 +153,11 @@ void				ft_fdf(t_fdf *fdf);
 **  ACTIONS
 */
 
-void				shift_x_y(t_fdf *fdf, int offset_x, int offset_y);
-
-void				shift_z(t_fdf *fdf, int z);
-
-void				zoom(t_fdf *fdf, int keycode, double zoom);
-
-void				rotate(t_fdf *fdf, float **matrix);
-
 void				isometric(t_fdf *fdf);
 
 void				flatten(t_fdf *fdf);
 
 void				profile(float **matrix);
-
-//void				apply_matrix2vector(t_vector *cur, t_vector *src,\
-//					float **mtx, float relief);
-
-void				change_relief(t_fdf *fdf, float dif);
 
 /*
 **  WAKE UP NEO, MATRIX HAS YOU
@@ -236,11 +215,11 @@ void				print_z(short **zbuffer);
 **	Z-BUFFER
 */
 
-void				free_zbuffer(short ***zbuffer);
+void				free_zbuffer(int ***zbuffer);
 
-short				**create_zbuffer(void);
+int					**create_zbuffer(void);
 
-void				drop_zbuffer(short **zbuffer);
+void				drop_zbuffer(int **zbuffer);
 
 
 #endif

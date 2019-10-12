@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:02:41 by astripeb          #+#    #+#             */
-/*   Updated: 2019/10/11 20:57:10 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:38:10 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void		margin(t_fdf *fdf)
 
 	margin_x = (IMG_WIDTH - (2 * MARGIN)) / (fdf->width - 1);
 	margin_y = (IMG_HEIGHT - (2 * MARGIN)) / (fdf->height - 1);
-	fdf->view->off_x = IMG_WIDTH / 2;
-	fdf->view->off_y = IMG_HEIGHT / 2;
+	fdf->view->off_x = IMG_WIDTH / 2 + (fdf->width % 2 ? 0 : margin_x / 2);
+	fdf->view->off_y = IMG_HEIGHT / 2 + (fdf->height % 2 ? 0 : margin_y / 2);
 	i = 0;
 	while (i < fdf->height)
 	{

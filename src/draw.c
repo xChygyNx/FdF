@@ -6,7 +6,7 @@
 /*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:14:12 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/11 20:50:00 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:40:15 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,32 @@
 
 void		isometric(t_fdf *fdf)
 {
+	int		margin_x;
+	int		margin_y;
+
+	margin_x = fdf->map[0][1].x - fdf->map[0][0].x;
+	margin_y = fdf->map[1][0].y - fdf->map[0][0].y;
 	free_matrix(&fdf->view->matrix);
-	if (!(fdf->view->matrix = matrix_x(0.615472907)))
+	if (!(fdf->view->matrix = matrix_x(0.523599)))
 		ft_exit(&fdf, MALLOC_FAILURE);
 	change_matrix(fdf, 0.785398, AXIS_Z);
-	fdf->view->off_x = IMG_WIDTH / 2;
-	fdf->view->off_y = IMG_HEIGHT / 2;
+	fdf->view->off_x = IMG_WIDTH / 2 + (fdf->width % 2 ? 0 : margin_x / 2);
+	fdf->view->off_y = IMG_HEIGHT / 2 + (fdf->height % 2 ? 0 : margin_y / 2);
 	fdf->view->zoom = 0.7;
 }
 
 void		flatten(t_fdf *fdf)
 {
+	int		margin_x;
+	int		margin_y;
+
+	margin_x = fdf->map[0][1].x - fdf->map[0][0].x;
+	margin_y = fdf->map[1][0].y - fdf->map[0][0].y;
 	free_matrix(&fdf->view->matrix);
 	if (!(fdf->view->matrix = matrix_orto()))
 		ft_exit(&fdf, MALLOC_FAILURE);
-	fdf->view->off_x = IMG_WIDTH / 2;
-	fdf->view->off_y = IMG_HEIGHT / 2;
+	fdf->view->off_x = IMG_WIDTH / 2 + (fdf->width % 2 ? 0 : margin_x / 2);
+	fdf->view->off_y = IMG_HEIGHT / 2 + (fdf->height % 2 ? 0 : margin_y / 2);
 	fdf->view->zoom = 1.0;
 }
 

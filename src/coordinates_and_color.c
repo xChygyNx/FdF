@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinates_and_color.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/10 12:28:07 by pcredibl         ###   ########.fr       */
+/*   Updated: 2019/10/12 11:36:26 by astripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,6 @@ static int	point_color(t_fdf *fdf, char *color16)
 		ft_exit(&fdf, INVALID_COLOR);
 	return (color);
 }
-/*
-static int	ft_atoi_fdf(t_fdf *fdf, char *str)
-{
-	long int		nb;
-	int				flag;
-
-	nb = 0;
-	flag = 0;
-	while ((*str > 8 && *str < 14) || *str == 32)
-		++str;
-	if (*str == '+')
-	{
-		str++;
-		flag = 1;
-	}
-	while (*str > 47 && *str < 58)
-	{
-		flag = 0;
-		if ((nb > 214748363 && *str > '7') || nb > 214748364)
-			ft_exit(&fdf, INVALID_HEIGHT);
-		nb = nb * 10 + (*str++ - '0');
-	}
-	if (*str || flag)
-		ft_exit(&fdf, INVALID_HEIGHT);
-	return (nb);
-}
-*/
 
 static int	ft_atoi_fdf(t_fdf *fdf, char *str)
 {

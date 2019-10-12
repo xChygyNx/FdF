@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: astripeb <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 15:47:32 by pcredibl          #+#    #+#              #
-#    Updated: 2019/10/12 12:02:36 by astripeb         ###   ########.fr        #
+#    Updated: 2019/10/12 12:12:43 by pcredibl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,8 @@ endif
 
 SRC 			= fdf.c ft_exit.c fdf_create.c vector_create.c
 SRC				+= coordinates_and_color.c initialize.c bresenham.c
-SRC				+= draw.c hooks.c matrix_create.c
-SRC				+= matrix_actions.c legend.c change_color.c
-SRC				+= auto_gradient_color.c auto_mix_color.c zbuffer.c
+SRC				+= draw.c hooks.c matrix_create.c matrix_actions.c
+SRC				+= legend.c gradient_color.c mix_color.c zbuffer.c
 
 OBJ				= $(addprefix $(OBJ_PATH)/,$(SRC:.c=.o))
 

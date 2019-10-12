@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinates_and_color.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pcredibl <pcredibl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 12:59:55 by pcredibl          #+#    #+#             */
-/*   Updated: 2019/10/12 11:53:16 by astripeb         ###   ########.fr       */
+/*   Updated: 2019/10/12 12:11:47 by pcredibl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ static int	ft_atoi_fdf(t_fdf *fdf, char *str)
 		ft_exit(&fdf, INVALID_INT);
 	free(nbr_s);
 	return (nbr);
+}
+
+unsigned int		change_color(t_fdf *fdf, t_vector *src)
+{
+	t_color	color;
+
+	if (fdf->colorful)
+	{
+		color.t_rgb.red = mix_red(fdf, src);
+		color.t_rgb.green = mix_green(fdf, src);
+		color.t_rgb.blue = mix_blue(fdf, src);
+	}
+	else
+	{
+		color.t_rgb.red = gradient_red(fdf, src);
+		color.t_rgb.green = gradient_green(fdf, src);
+		color.t_rgb.blue = gradient_blue(fdf, src);
+	}
+	return (color.color);
 }
 
 void		point_height_color(t_fdf *fdf, int i, int j, char *point)
